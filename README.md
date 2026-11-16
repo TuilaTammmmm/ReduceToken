@@ -75,6 +75,18 @@ rt init
 
 ---
 
+### 🔄 How to Update (For Existing Users)
+When a new version or bug fix is released, upgrade everything in **1 single command**:
+
+```bash
+rt upgrade
+```
+*This automatically pulls the latest Git package via pip AND synchronizes all global AI plugins (Antigravity, Cursor, Claude Code, OpenCode, Codex).*
+
+*(Or update manually via pip: `pip install -U git+https://github.com/TuilaTammmmm/ReduceToken.git && rt install --global`)*
+
+---
+
 ## 🎯 Core Capabilities & Prompt Examples
 
 | Skill / Feature | Description | Prompt Example |
