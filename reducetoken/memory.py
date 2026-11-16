@@ -31,7 +31,7 @@ class SessionMemoryManager:
         self.memory_data["last_updated"] = time.strftime("%Y-%m-%d %H:%M:%S")
         try:
             with open(self.memory_file, "w", encoding="utf-8") as f:
-                json.dump(self.memory_data, f, indent=2)
+                json.dump(self.memory_data, f, indent=2, ensure_ascii=False)
             self.export_markdown()
         except Exception:
             pass

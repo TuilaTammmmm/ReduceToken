@@ -14,6 +14,7 @@ class Generator:
         self.root_dir = Path(root_dir)
         self.graph = graph
         self.output_dir = self.root_dir / ".codegraph"
+        self.output_dir.mkdir(parents=True, exist_ok=True)
 
     def generate_all(self):
         self.output_dir.mkdir(parents=True, exist_ok=True)
@@ -106,13 +107,13 @@ class Generator:
         out_file = self.output_dir / "graph.json"
         data = self.graph.to_dict()
         with open(out_file, "w", encoding="utf-8") as f:
-            json.dump(data, f, indent=2)
+            json.dump(data, f, indent=2, ensure_ascii=False)
         return out_file
 
     def write_symbols_json(self) -> Path:
         out_file = self.output_dir / "symbols.json"
         with open(out_file, "w", encoding="utf-8") as f:
-            json.dump(self.graph.symbol_index, f, indent=2)
+            json.dump(self.graph.symbol_index, f, indent=2, ensure_ascii=False)
         return out_file
 
     @staticmethod

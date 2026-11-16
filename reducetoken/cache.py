@@ -91,7 +91,7 @@ class CacheManager:
         self.cache_file.parent.mkdir(parents=True, exist_ok=True)
         try:
             with open(self.cache_file, "w", encoding="utf-8") as f:
-                json.dump(self.cache_data, f, indent=2)
+                json.dump(self.cache_data, f, indent=2, ensure_ascii=False)
         except Exception:
             pass
 

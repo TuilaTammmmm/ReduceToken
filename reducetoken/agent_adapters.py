@@ -163,7 +163,7 @@ class GlobalAdapterManager:
             (target / "plugin.json").write_text(plugin_json.read_text(encoding="utf-8"), encoding="utf-8")
         else:
             default_manifest = {"name": "reduce-token", "displayName": "ReduceToken", "version": "1.0.0"}
-            (target / "plugin.json").write_text(json.dumps(default_manifest, indent=2), encoding="utf-8")
+            (target / "plugin.json").write_text(json.dumps(default_manifest, indent=2, ensure_ascii=False), encoding="utf-8")
         self.copy_skill_bundle(target / "skills" / "reduce-token")
         (target / "rules" / "AGENTS.md").write_text(AGENTS_INSTRUCTION, encoding="utf-8")
         mcp_conf = self.get_plugin_dir() / "mcp_config.json"
@@ -187,7 +187,7 @@ class GlobalAdapterManager:
             "command": "python",
             "args": ["-m", "reducetoken.cli", "mcp"]
         }
-        mcp_file.write_text(json.dumps(mcp_conf, indent=2), encoding="utf-8")
+        mcp_file.write_text(json.dumps(mcp_conf, indent=2, ensure_ascii=False), encoding="utf-8")
         return str(mcp_file)
 
     def setup_claude(self) -> str:
@@ -218,7 +218,7 @@ class GlobalAdapterManager:
             "args": ["-m", "reducetoken.cli", "mcp"],
             "enabled": True
         }
-        conf_file.write_text(json.dumps(conf, indent=2), encoding="utf-8")
+        conf_file.write_text(json.dumps(conf, indent=2, ensure_ascii=False), encoding="utf-8")
         return str(skill_dir)
 
     def setup_agents_standard(self) -> str:

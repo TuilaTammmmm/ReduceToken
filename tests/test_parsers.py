@@ -75,6 +75,21 @@ export const logout = () => {
         self.assertIn("react", sources)
         self.assertIn("./api/user", sources)
 
+    def test_unicode_vietnamese(self):
+        code = '''
+"""HỆ THỐNG QUẢN LÝ KHO DƯỢC PHẨM"""
+
+class KhoDuocPham:
+    """Lớp quản lý xuất nhập tồn thuốc và vắc-xin."""
+    def nhap_kho(self, so_luong: int):
+        """Thực hiện nhập kho số lượng mới."""
+        pass
+'''
+        res = parse_python_file("kho.py", code)
+        self.assertEqual(res.summary, "HỆ THỐNG QUẢN LÝ KHO DƯỢC PHẨM")
+        self.assertEqual(res.symbols[0].name, "KhoDuocPham")
+        self.assertEqual(res.symbols[0].doc, "Lớp quản lý xuất nhập tồn thuốc và vắc-xin.")
+
     def test_generic_parser(self):
         go_code = '''
 package auth

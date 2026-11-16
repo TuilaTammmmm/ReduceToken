@@ -120,6 +120,32 @@ class TestGraphAndCache(unittest.TestCase):
             head_file.write_text("ref: refs/heads/feature-login\n", encoding="utf-8")
             self.assertTrue(cm.check_and_update_git_head(tmp_path))
 
+    def test_utf8_preservation_in_json(self):
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            tmp_path = Path(tmp_dir)
+            graph = CodeGraph(tmp_path)
+            analysis = FileAnalysis(
+                file_path="kho_duoc.py",
+                language="python",
+                symbols=[SymbolInfo(name="KhoThuoc", kind="class", line=1, doc="Hệ thống quản lý kho dược phẩm")],
+                summary="HỆ THỐNG QUẢN LÝ KHO DƯỢC PHẨM"
+            )
+            graph.add_analysis("kho_duoc.py", analysis)
+            graph.build()
+
+            gen = Generator(tmp_path, graph)
+            sym_file = gen.write_symbols_json()
+            graph_file = gen.write_graph_json()
+
+            # Verify that Vietnamese characters are saved as UTF-8 directly, NOT escaped as \uXXXX
+            sym_content = sym_file.read_text(encoding="utf-8")
+            self.assertIn("Hệ thống quản lý kho dược phẩm", sym_content)
+            self.assertNotIn("\\u1ec6", sym_content)
+
+            graph_content = graph_file.read_text(encoding="utf-8")
+            self.assertIn("HỆ THỐNG QUẢN LÝ KHO DƯỢC PHẨM", graph_content)
+            self.assertNotIn("\\u1ec6", graph_content)
+
 
 if __name__ == "__main__":
     unittest.main()
