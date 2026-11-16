@@ -1,0 +1,1443 @@
+{
+  "agentadaptermanager": [
+    {
+      "name": "AgentAdapterManager",
+      "kind": "class",
+      "file": "reducetoken/agent_adapters.py",
+      "line": 55,
+      "doc": "",
+      "args": [],
+      "methods": [
+        "__init__",
+        "setup_all",
+        "setup_copilot",
+        "setup_cursor",
+        "setup_claude",
+        "setup_agents"
+      ]
+    }
+  ],
+  "__init__": [
+    {
+      "name": "__init__",
+      "kind": "function",
+      "file": "reducetoken/agent_adapters.py",
+      "line": 56,
+      "doc": "",
+      "args": [
+        "root_dir"
+      ],
+      "methods": []
+    },
+    {
+      "name": "__init__",
+      "kind": "function",
+      "file": "reducetoken/agent_adapters.py",
+      "line": 92,
+      "doc": "",
+      "args": [
+        "home_dir"
+      ],
+      "methods": []
+    },
+    {
+      "name": "__init__",
+      "kind": "function",
+      "file": "reducetoken/cache.py",
+      "line": 77,
+      "doc": "",
+      "args": [
+        "cache_file"
+      ],
+      "methods": []
+    },
+    {
+      "name": "__init__",
+      "kind": "function",
+      "file": "reducetoken/generator.py",
+      "line": 13,
+      "doc": "",
+      "args": [
+        "root_dir",
+        "graph"
+      ],
+      "methods": []
+    },
+    {
+      "name": "__init__",
+      "kind": "function",
+      "file": "reducetoken/graph.py",
+      "line": 9,
+      "doc": "",
+      "args": [
+        "root_dir"
+      ],
+      "methods": []
+    },
+    {
+      "name": "__init__",
+      "kind": "function",
+      "file": "reducetoken/mcp_server.py",
+      "line": 16,
+      "doc": "",
+      "args": [
+        "root_dir"
+      ],
+      "methods": []
+    },
+    {
+      "name": "__init__",
+      "kind": "function",
+      "file": "reducetoken/memory.py",
+      "line": 8,
+      "doc": "",
+      "args": [
+        "root_dir"
+      ],
+      "methods": []
+    },
+    {
+      "name": "__init__",
+      "kind": "function",
+      "file": "reducetoken/scanner.py",
+      "line": 70,
+      "doc": "",
+      "args": [
+        "root_dir",
+        "custom_ignore_patterns"
+      ],
+      "methods": []
+    },
+    {
+      "name": "__init__",
+      "kind": "function",
+      "file": "reducetoken/parsers/python_parser.py",
+      "line": 7,
+      "doc": "",
+      "args": [
+        "file_path"
+      ],
+      "methods": []
+    }
+  ],
+  "setup_all": [
+    {
+      "name": "setup_all",
+      "kind": "function",
+      "file": "reducetoken/agent_adapters.py",
+      "line": 59,
+      "doc": "",
+      "args": [],
+      "methods": []
+    }
+  ],
+  "setup_copilot": [
+    {
+      "name": "setup_copilot",
+      "kind": "function",
+      "file": "reducetoken/agent_adapters.py",
+      "line": 65,
+      "doc": "",
+      "args": [],
+      "methods": []
+    }
+  ],
+  "setup_cursor": [
+    {
+      "name": "setup_cursor",
+      "kind": "function",
+      "file": "reducetoken/agent_adapters.py",
+      "line": 71,
+      "doc": "",
+      "args": [],
+      "methods": []
+    },
+    {
+      "name": "setup_cursor",
+      "kind": "function",
+      "file": "reducetoken/agent_adapters.py",
+      "line": 174,
+      "doc": "",
+      "args": [],
+      "methods": []
+    }
+  ],
+  "setup_claude": [
+    {
+      "name": "setup_claude",
+      "kind": "function",
+      "file": "reducetoken/agent_adapters.py",
+      "line": 76,
+      "doc": "",
+      "args": [],
+      "methods": []
+    },
+    {
+      "name": "setup_claude",
+      "kind": "function",
+      "file": "reducetoken/agent_adapters.py",
+      "line": 193,
+      "doc": "",
+      "args": [],
+      "methods": []
+    }
+  ],
+  "setup_agents": [
+    {
+      "name": "setup_agents",
+      "kind": "function",
+      "file": "reducetoken/agent_adapters.py",
+      "line": 81,
+      "doc": "",
+      "args": [],
+      "methods": []
+    }
+  ],
+  "globaladaptermanager": [
+    {
+      "name": "GlobalAdapterManager",
+      "kind": "class",
+      "file": "reducetoken/agent_adapters.py",
+      "line": 90,
+      "doc": "Installs ReduceToken skills and rules globally across all major AI coding agents.",
+      "args": [],
+      "methods": [
+        "__init__",
+        "get_plugin_dir",
+        "get_skill_content",
+        "detect_environments",
+        "copy_skill_bundle",
+        "setup_gemini",
+        "setup_cursor",
+        "setup_claude",
+        "setup_opencode",
+        "setup_agents_standard",
+        "setup_all_global"
+      ]
+    }
+  ],
+  "get_plugin_dir": [
+    {
+      "name": "get_plugin_dir",
+      "kind": "function",
+      "file": "reducetoken/agent_adapters.py",
+      "line": 96,
+      "doc": "",
+      "args": [],
+      "methods": []
+    }
+  ],
+  "get_skill_content": [
+    {
+      "name": "get_skill_content",
+      "kind": "function",
+      "file": "reducetoken/agent_adapters.py",
+      "line": 105,
+      "doc": "",
+      "args": [],
+      "methods": []
+    }
+  ],
+  "detect_environments": [
+    {
+      "name": "detect_environments",
+      "kind": "function",
+      "file": "reducetoken/agent_adapters.py",
+      "line": 115,
+      "doc": "Detects which AI tools/environments are installed or present on this machine.",
+      "args": [],
+      "methods": []
+    }
+  ],
+  "copy_skill_bundle": [
+    {
+      "name": "copy_skill_bundle",
+      "kind": "function",
+      "file": "reducetoken/agent_adapters.py",
+      "line": 145,
+      "doc": "Copies SKILL.md and references/ directory to the destination.",
+      "args": [
+        "dest_skill_dir"
+      ],
+      "methods": []
+    }
+  ],
+  "setup_gemini": [
+    {
+      "name": "setup_gemini",
+      "kind": "function",
+      "file": "reducetoken/agent_adapters.py",
+      "line": 158,
+      "doc": "",
+      "args": [],
+      "methods": []
+    }
+  ],
+  "setup_opencode": [
+    {
+      "name": "setup_opencode",
+      "kind": "function",
+      "file": "reducetoken/agent_adapters.py",
+      "line": 202,
+      "doc": "",
+      "args": [],
+      "methods": []
+    }
+  ],
+  "setup_agents_standard": [
+    {
+      "name": "setup_agents_standard",
+      "kind": "function",
+      "file": "reducetoken/agent_adapters.py",
+      "line": 224,
+      "doc": "",
+      "args": [],
+      "methods": []
+    }
+  ],
+  "setup_all_global": [
+    {
+      "name": "setup_all_global",
+      "kind": "function",
+      "file": "reducetoken/agent_adapters.py",
+      "line": 233,
+      "doc": "",
+      "args": [],
+      "methods": []
+    }
+  ],
+  "calculate_sha256": [
+    {
+      "name": "calculate_sha256",
+      "kind": "function",
+      "file": "reducetoken/cache.py",
+      "line": 9,
+      "doc": "",
+      "args": [
+        "full_path"
+      ],
+      "methods": []
+    }
+  ],
+  "analysis_to_dict": [
+    {
+      "name": "analysis_to_dict",
+      "kind": "function",
+      "file": "reducetoken/cache.py",
+      "line": 20,
+      "doc": "",
+      "args": [
+        "analysis"
+      ],
+      "methods": []
+    }
+  ],
+  "dict_to_analysis": [
+    {
+      "name": "dict_to_analysis",
+      "kind": "function",
+      "file": "reducetoken/cache.py",
+      "line": 45,
+      "doc": "",
+      "args": [
+        "d"
+      ],
+      "methods": []
+    }
+  ],
+  "cachemanager": [
+    {
+      "name": "CacheManager",
+      "kind": "class",
+      "file": "reducetoken/cache.py",
+      "line": 76,
+      "doc": "",
+      "args": [],
+      "methods": [
+        "__init__",
+        "load",
+        "save",
+        "get_analysis",
+        "is_cached_and_valid",
+        "update_entry",
+        "get_git_head",
+        "check_and_update_git_head",
+        "remove_missing"
+      ]
+    }
+  ],
+  "load": [
+    {
+      "name": "load",
+      "kind": "function",
+      "file": "reducetoken/cache.py",
+      "line": 82,
+      "doc": "",
+      "args": [],
+      "methods": []
+    },
+    {
+      "name": "load",
+      "kind": "function",
+      "file": "reducetoken/memory.py",
+      "line": 21,
+      "doc": "",
+      "args": [],
+      "methods": []
+    }
+  ],
+  "save": [
+    {
+      "name": "save",
+      "kind": "function",
+      "file": "reducetoken/cache.py",
+      "line": 90,
+      "doc": "",
+      "args": [],
+      "methods": []
+    },
+    {
+      "name": "save",
+      "kind": "function",
+      "file": "reducetoken/memory.py",
+      "line": 29,
+      "doc": "",
+      "args": [],
+      "methods": []
+    }
+  ],
+  "get_analysis": [
+    {
+      "name": "get_analysis",
+      "kind": "function",
+      "file": "reducetoken/cache.py",
+      "line": 98,
+      "doc": "",
+      "args": [
+        "rel_path"
+      ],
+      "methods": []
+    }
+  ],
+  "is_cached_and_valid": [
+    {
+      "name": "is_cached_and_valid",
+      "kind": "function",
+      "file": "reducetoken/cache.py",
+      "line": 104,
+      "doc": "",
+      "args": [
+        "rel_path",
+        "full_path"
+      ],
+      "methods": []
+    }
+  ],
+  "update_entry": [
+    {
+      "name": "update_entry",
+      "kind": "function",
+      "file": "reducetoken/cache.py",
+      "line": 129,
+      "doc": "",
+      "args": [
+        "rel_path",
+        "full_path",
+        "analysis"
+      ],
+      "methods": []
+    }
+  ],
+  "get_git_head": [
+    {
+      "name": "get_git_head",
+      "kind": "function",
+      "file": "reducetoken/cache.py",
+      "line": 143,
+      "doc": "Fast read of .git/HEAD to detect branch switches, merges, or checkouts (<0.2ms).",
+      "args": [
+        "root_dir"
+      ],
+      "methods": []
+    }
+  ],
+  "check_and_update_git_head": [
+    {
+      "name": "check_and_update_git_head",
+      "kind": "function",
+      "file": "reducetoken/cache.py",
+      "line": 160,
+      "doc": "Returns True if Git HEAD has changed since last cache write.",
+      "args": [
+        "root_dir"
+      ],
+      "methods": []
+    }
+  ],
+  "remove_missing": [
+    {
+      "name": "remove_missing",
+      "kind": "function",
+      "file": "reducetoken/cache.py",
+      "line": 171,
+      "doc": "",
+      "args": [
+        "valid_rel_paths"
+      ],
+      "methods": []
+    }
+  ],
+  "run_pipeline": [
+    {
+      "name": "run_pipeline",
+      "kind": "function",
+      "file": "reducetoken/cli.py",
+      "line": 17,
+      "doc": "",
+      "args": [
+        "root_dir",
+        "force",
+        "verbose"
+      ],
+      "methods": []
+    }
+  ],
+  "install_git_hook": [
+    {
+      "name": "install_git_hook",
+      "kind": "function",
+      "file": "reducetoken/cli.py",
+      "line": 79,
+      "doc": "",
+      "args": [
+        "root_dir"
+      ],
+      "methods": []
+    }
+  ],
+  "cmd_init": [
+    {
+      "name": "cmd_init",
+      "kind": "function",
+      "file": "reducetoken/cli.py",
+      "line": 96,
+      "doc": "",
+      "args": [
+        "args"
+      ],
+      "methods": []
+    }
+  ],
+  "cmd_update": [
+    {
+      "name": "cmd_update",
+      "kind": "function",
+      "file": "reducetoken/cli.py",
+      "line": 123,
+      "doc": "",
+      "args": [
+        "args"
+      ],
+      "methods": []
+    }
+  ],
+  "cmd_query": [
+    {
+      "name": "cmd_query",
+      "kind": "function",
+      "file": "reducetoken/cli.py",
+      "line": 128,
+      "doc": "",
+      "args": [
+        "args"
+      ],
+      "methods": []
+    }
+  ],
+  "cmd_overview": [
+    {
+      "name": "cmd_overview",
+      "kind": "function",
+      "file": "reducetoken/cli.py",
+      "line": 137,
+      "doc": "",
+      "args": [
+        "args"
+      ],
+      "methods": []
+    }
+  ],
+  "cmd_compact": [
+    {
+      "name": "cmd_compact",
+      "kind": "function",
+      "file": "reducetoken/cli.py",
+      "line": 146,
+      "doc": "",
+      "args": [
+        "args"
+      ],
+      "methods": []
+    }
+  ],
+  "cmd_memory": [
+    {
+      "name": "cmd_memory",
+      "kind": "function",
+      "file": "reducetoken/cli.py",
+      "line": 154,
+      "doc": "",
+      "args": [
+        "args"
+      ],
+      "methods": []
+    }
+  ],
+  "cmd_git_hook": [
+    {
+      "name": "cmd_git_hook",
+      "kind": "function",
+      "file": "reducetoken/cli.py",
+      "line": 169,
+      "doc": "",
+      "args": [
+        "args"
+      ],
+      "methods": []
+    }
+  ],
+  "cmd_install": [
+    {
+      "name": "cmd_install",
+      "kind": "function",
+      "file": "reducetoken/cli.py",
+      "line": 186,
+      "doc": "",
+      "args": [
+        "args"
+      ],
+      "methods": []
+    }
+  ],
+  "main": [
+    {
+      "name": "main",
+      "kind": "function",
+      "file": "reducetoken/cli.py",
+      "line": 266,
+      "doc": "",
+      "args": [],
+      "methods": []
+    },
+    {
+      "name": "main",
+      "kind": "function",
+      "file": "reducetoken/mcp_server.py",
+      "line": 204,
+      "doc": "",
+      "args": [],
+      "methods": []
+    }
+  ],
+  "generator": [
+    {
+      "name": "Generator",
+      "kind": "class",
+      "file": "reducetoken/generator.py",
+      "line": 12,
+      "doc": "",
+      "args": [],
+      "methods": [
+        "__init__",
+        "generate_all",
+        "_get_top_symbols",
+        "write_architecture_map",
+        "write_graph_json",
+        "write_symbols_json",
+        "format_agent_dsl"
+      ]
+    }
+  ],
+  "generate_all": [
+    {
+      "name": "generate_all",
+      "kind": "function",
+      "file": "reducetoken/generator.py",
+      "line": 18,
+      "doc": "",
+      "args": [],
+      "methods": []
+    }
+  ],
+  "_get_top_symbols": [
+    {
+      "name": "_get_top_symbols",
+      "kind": "function",
+      "file": "reducetoken/generator.py",
+      "line": 25,
+      "doc": "",
+      "args": [
+        "analysis"
+      ],
+      "methods": []
+    }
+  ],
+  "write_architecture_map": [
+    {
+      "name": "write_architecture_map",
+      "kind": "function",
+      "file": "reducetoken/generator.py",
+      "line": 41,
+      "doc": "",
+      "args": [],
+      "methods": []
+    }
+  ],
+  "file_sort_key": [
+    {
+      "name": "file_sort_key",
+      "kind": "function",
+      "file": "reducetoken/generator.py",
+      "line": 73,
+      "doc": "",
+      "args": [
+        "file_path"
+      ],
+      "methods": []
+    }
+  ],
+  "write_graph_json": [
+    {
+      "name": "write_graph_json",
+      "kind": "function",
+      "file": "reducetoken/generator.py",
+      "line": 105,
+      "doc": "",
+      "args": [],
+      "methods": []
+    }
+  ],
+  "write_symbols_json": [
+    {
+      "name": "write_symbols_json",
+      "kind": "function",
+      "file": "reducetoken/generator.py",
+      "line": 112,
+      "doc": "",
+      "args": [],
+      "methods": []
+    }
+  ],
+  "format_agent_dsl": [
+    {
+      "name": "format_agent_dsl",
+      "kind": "function",
+      "file": "reducetoken/generator.py",
+      "line": 119,
+      "doc": "Format subgraph query result as ultra-compact text (~50-80 tokens).",
+      "args": [
+        "query_result"
+      ],
+      "methods": []
+    }
+  ],
+  "codegraph": [
+    {
+      "name": "CodeGraph",
+      "kind": "class",
+      "file": "reducetoken/graph.py",
+      "line": 8,
+      "doc": "",
+      "args": [],
+      "methods": [
+        "__init__",
+        "_load_path_aliases",
+        "add_analysis",
+        "build",
+        "_resolve_import",
+        "query",
+        "get_overview_stats",
+        "to_dict"
+      ]
+    }
+  ],
+  "_load_path_aliases": [
+    {
+      "name": "_load_path_aliases",
+      "kind": "function",
+      "file": "reducetoken/graph.py",
+      "line": 26,
+      "doc": "Loads tsconfig/jsconfig paths and monorepo workspace packages to resolve virtual imports.",
+      "args": [],
+      "methods": []
+    }
+  ],
+  "add_analysis": [
+    {
+      "name": "add_analysis",
+      "kind": "function",
+      "file": "reducetoken/graph.py",
+      "line": 69,
+      "doc": "",
+      "args": [
+        "rel_path",
+        "analysis"
+      ],
+      "methods": []
+    }
+  ],
+  "build": [
+    {
+      "name": "build",
+      "kind": "function",
+      "file": "reducetoken/graph.py",
+      "line": 73,
+      "doc": "Build edges, resolve dependencies, and index symbols.",
+      "args": [],
+      "methods": []
+    }
+  ],
+  "_resolve_import": [
+    {
+      "name": "_resolve_import",
+      "kind": "function",
+      "file": "reducetoken/graph.py",
+      "line": 106,
+      "doc": "Try to resolve import source to an existing file in the graph.",
+      "args": [
+        "from_file",
+        "source",
+        "is_relative"
+      ],
+      "methods": []
+    }
+  ],
+  "query": [
+    {
+      "name": "query",
+      "kind": "function",
+      "file": "reducetoken/graph.py",
+      "line": 147,
+      "doc": "Query the graph by symbol, keyword, or file path.",
+      "args": [
+        "query_str"
+      ],
+      "methods": []
+    }
+  ],
+  "get_overview_stats": [
+    {
+      "name": "get_overview_stats",
+      "kind": "function",
+      "file": "reducetoken/graph.py",
+      "line": 192,
+      "doc": "Rank central files and entry points for the high-level architecture map.",
+      "args": [],
+      "methods": []
+    }
+  ],
+  "to_dict": [
+    {
+      "name": "to_dict",
+      "kind": "function",
+      "file": "reducetoken/graph.py",
+      "line": 219,
+      "doc": "Serialize full graph.",
+      "args": [],
+      "methods": []
+    }
+  ],
+  "mcpserver": [
+    {
+      "name": "McpServer",
+      "kind": "class",
+      "file": "reducetoken/mcp_server.py",
+      "line": 15,
+      "doc": "",
+      "args": [],
+      "methods": [
+        "__init__",
+        "_ensure_graph_loaded",
+        "get_architecture_map",
+        "query_graph",
+        "handle_request",
+        "run_stdio"
+      ]
+    }
+  ],
+  "_ensure_graph_loaded": [
+    {
+      "name": "_ensure_graph_loaded",
+      "kind": "function",
+      "file": "reducetoken/mcp_server.py",
+      "line": 24,
+      "doc": "",
+      "args": [],
+      "methods": []
+    }
+  ],
+  "get_architecture_map": [
+    {
+      "name": "get_architecture_map",
+      "kind": "function",
+      "file": "reducetoken/mcp_server.py",
+      "line": 56,
+      "doc": "",
+      "args": [],
+      "methods": []
+    }
+  ],
+  "query_graph": [
+    {
+      "name": "query_graph",
+      "kind": "function",
+      "file": "reducetoken/mcp_server.py",
+      "line": 64,
+      "doc": "",
+      "args": [
+        "query"
+      ],
+      "methods": []
+    }
+  ],
+  "handle_request": [
+    {
+      "name": "handle_request",
+      "kind": "function",
+      "file": "reducetoken/mcp_server.py",
+      "line": 70,
+      "doc": "",
+      "args": [
+        "request"
+      ],
+      "methods": []
+    }
+  ],
+  "run_stdio": [
+    {
+      "name": "run_stdio",
+      "kind": "function",
+      "file": "reducetoken/mcp_server.py",
+      "line": 183,
+      "doc": "",
+      "args": [],
+      "methods": []
+    }
+  ],
+  "sessionmemorymanager": [
+    {
+      "name": "SessionMemoryManager",
+      "kind": "class",
+      "file": "reducetoken/memory.py",
+      "line": 7,
+      "doc": "",
+      "args": [],
+      "methods": [
+        "__init__",
+        "load",
+        "save",
+        "add_decision",
+        "add_convention",
+        "record_touched_file",
+        "compact",
+        "export_markdown",
+        "get_compact_summary"
+      ]
+    }
+  ],
+  "add_decision": [
+    {
+      "name": "add_decision",
+      "kind": "function",
+      "file": "reducetoken/memory.py",
+      "line": 39,
+      "doc": "",
+      "args": [
+        "topic",
+        "content"
+      ],
+      "methods": []
+    }
+  ],
+  "add_convention": [
+    {
+      "name": "add_convention",
+      "kind": "function",
+      "file": "reducetoken/memory.py",
+      "line": 51,
+      "doc": "",
+      "args": [
+        "convention"
+      ],
+      "methods": []
+    }
+  ],
+  "record_touched_file": [
+    {
+      "name": "record_touched_file",
+      "kind": "function",
+      "file": "reducetoken/memory.py",
+      "line": 58,
+      "doc": "",
+      "args": [
+        "rel_path"
+      ],
+      "methods": []
+    }
+  ],
+  "compact": [
+    {
+      "name": "compact",
+      "kind": "function",
+      "file": "reducetoken/memory.py",
+      "line": 66,
+      "doc": "Compact session memory to prevent memory drift and maintain sub-250 token budget.",
+      "args": [
+        "max_decisions",
+        "max_touched"
+      ],
+      "methods": []
+    }
+  ],
+  "export_markdown": [
+    {
+      "name": "export_markdown",
+      "kind": "function",
+      "file": "reducetoken/memory.py",
+      "line": 86,
+      "doc": "Export compact markdown summary (~150-250 tokens) for AI context.",
+      "args": [],
+      "methods": []
+    }
+  ],
+  "get_compact_summary": [
+    {
+      "name": "get_compact_summary",
+      "kind": "function",
+      "file": "reducetoken/memory.py",
+      "line": 119,
+      "doc": "",
+      "args": [],
+      "methods": []
+    }
+  ],
+  "filescanner": [
+    {
+      "name": "FileScanner",
+      "kind": "class",
+      "file": "reducetoken/scanner.py",
+      "line": 69,
+      "doc": "",
+      "args": [],
+      "methods": [
+        "__init__",
+        "_load_ignore_files",
+        "_parse_ignore_file",
+        "should_ignore",
+        "is_minified_or_binary",
+        "scan"
+      ]
+    }
+  ],
+  "_load_ignore_files": [
+    {
+      "name": "_load_ignore_files",
+      "kind": "function",
+      "file": "reducetoken/scanner.py",
+      "line": 75,
+      "doc": "",
+      "args": [
+        "custom_patterns"
+      ],
+      "methods": []
+    }
+  ],
+  "_parse_ignore_file": [
+    {
+      "name": "_parse_ignore_file",
+      "kind": "function",
+      "file": "reducetoken/scanner.py",
+      "line": 105,
+      "doc": "",
+      "args": [
+        "file_path"
+      ],
+      "methods": []
+    }
+  ],
+  "should_ignore": [
+    {
+      "name": "should_ignore",
+      "kind": "function",
+      "file": "reducetoken/scanner.py",
+      "line": 112,
+      "doc": "",
+      "args": [
+        "rel_path",
+        "is_dir"
+      ],
+      "methods": []
+    }
+  ],
+  "is_minified_or_binary": [
+    {
+      "name": "is_minified_or_binary",
+      "kind": "function",
+      "file": "reducetoken/scanner.py",
+      "line": 145,
+      "doc": "Check if file has extremely long lines (>1000 chars) or binary bytes.",
+      "args": [
+        "full_path"
+      ],
+      "methods": []
+    }
+  ],
+  "scan": [
+    {
+      "name": "scan",
+      "kind": "function",
+      "file": "reducetoken/scanner.py",
+      "line": 161,
+      "doc": "Scan workspace and return a list of file dicts:",
+      "args": [],
+      "methods": []
+    }
+  ],
+  "parse_generic_file": [
+    {
+      "name": "parse_generic_file",
+      "kind": "function",
+      "file": "reducetoken/parsers/generic_parser.py",
+      "line": 23,
+      "doc": "",
+      "args": [
+        "file_path",
+        "code",
+        "language"
+      ],
+      "methods": []
+    }
+  ],
+  "clean_args": [
+    {
+      "name": "clean_args",
+      "kind": "function",
+      "file": "reducetoken/parsers/js_ts_parser.py",
+      "line": 58,
+      "doc": "Parse function arguments handling destructuring and default values properly.",
+      "args": [
+        "args_str"
+      ],
+      "methods": []
+    }
+  ],
+  "parse_js_ts_file": [
+    {
+      "name": "parse_js_ts_file",
+      "kind": "function",
+      "file": "reducetoken/parsers/js_ts_parser.py",
+      "line": 103,
+      "doc": "",
+      "args": [
+        "file_path",
+        "code",
+        "language"
+      ],
+      "methods": []
+    }
+  ],
+  "pythonastvisitor": [
+    {
+      "name": "PythonAstVisitor",
+      "kind": "class",
+      "file": "reducetoken/parsers/python_parser.py",
+      "line": 6,
+      "doc": "",
+      "args": [],
+      "methods": [
+        "__init__",
+        "visit_Module",
+        "visit_Import",
+        "visit_ImportFrom",
+        "visit_ClassDef",
+        "visit_FunctionDef",
+        "visit_AsyncFunctionDef",
+        "_handle_function",
+        "visit_Call",
+        "_get_call_name"
+      ]
+    }
+  ],
+  "visit_module": [
+    {
+      "name": "visit_Module",
+      "kind": "function",
+      "file": "reducetoken/parsers/python_parser.py",
+      "line": 15,
+      "doc": "",
+      "args": [
+        "node"
+      ],
+      "methods": []
+    }
+  ],
+  "visit_import": [
+    {
+      "name": "visit_Import",
+      "kind": "function",
+      "file": "reducetoken/parsers/python_parser.py",
+      "line": 21,
+      "doc": "",
+      "args": [
+        "node"
+      ],
+      "methods": []
+    }
+  ],
+  "visit_importfrom": [
+    {
+      "name": "visit_ImportFrom",
+      "kind": "function",
+      "file": "reducetoken/parsers/python_parser.py",
+      "line": 30,
+      "doc": "",
+      "args": [
+        "node"
+      ],
+      "methods": []
+    }
+  ],
+  "visit_classdef": [
+    {
+      "name": "visit_ClassDef",
+      "kind": "function",
+      "file": "reducetoken/parsers/python_parser.py",
+      "line": 43,
+      "doc": "",
+      "args": [
+        "node"
+      ],
+      "methods": []
+    }
+  ],
+  "visit_functiondef": [
+    {
+      "name": "visit_FunctionDef",
+      "kind": "function",
+      "file": "reducetoken/parsers/python_parser.py",
+      "line": 62,
+      "doc": "",
+      "args": [
+        "node"
+      ],
+      "methods": []
+    }
+  ],
+  "visit_asyncfunctiondef": [
+    {
+      "name": "visit_AsyncFunctionDef",
+      "kind": "function",
+      "file": "reducetoken/parsers/python_parser.py",
+      "line": 65,
+      "doc": "",
+      "args": [
+        "node"
+      ],
+      "methods": []
+    }
+  ],
+  "_handle_function": [
+    {
+      "name": "_handle_function",
+      "kind": "function",
+      "file": "reducetoken/parsers/python_parser.py",
+      "line": 68,
+      "doc": "",
+      "args": [
+        "node"
+      ],
+      "methods": []
+    }
+  ],
+  "visit_call": [
+    {
+      "name": "visit_Call",
+      "kind": "function",
+      "file": "reducetoken/parsers/python_parser.py",
+      "line": 83,
+      "doc": "",
+      "args": [
+        "node"
+      ],
+      "methods": []
+    }
+  ],
+  "_get_call_name": [
+    {
+      "name": "_get_call_name",
+      "kind": "function",
+      "file": "reducetoken/parsers/python_parser.py",
+      "line": 89,
+      "doc": "",
+      "args": [
+        "func_node"
+      ],
+      "methods": []
+    }
+  ],
+  "parse_python_file": [
+    {
+      "name": "parse_python_file",
+      "kind": "function",
+      "file": "reducetoken/parsers/python_parser.py",
+      "line": 100,
+      "doc": "",
+      "args": [
+        "file_path",
+        "code"
+      ],
+      "methods": []
+    }
+  ],
+  "symbolinfo": [
+    {
+      "name": "SymbolInfo",
+      "kind": "class",
+      "file": "reducetoken/parsers/__init__.py",
+      "line": 5,
+      "doc": "",
+      "args": [],
+      "methods": []
+    }
+  ],
+  "importinfo": [
+    {
+      "name": "ImportInfo",
+      "kind": "class",
+      "file": "reducetoken/parsers/__init__.py",
+      "line": 14,
+      "doc": "",
+      "args": [],
+      "methods": []
+    }
+  ],
+  "fileanalysis": [
+    {
+      "name": "FileAnalysis",
+      "kind": "class",
+      "file": "reducetoken/parsers/__init__.py",
+      "line": 20,
+      "doc": "",
+      "args": [],
+      "methods": []
+    }
+  ],
+  "testgraphandcache": [
+    {
+      "name": "TestGraphAndCache",
+      "kind": "class",
+      "file": "tests/test_graph.py",
+      "line": 12,
+      "doc": "",
+      "args": [],
+      "methods": [
+        "test_graph_resolution_and_query",
+        "test_cache_incremental",
+        "test_path_alias_resolution",
+        "test_git_head_tracking"
+      ]
+    }
+  ],
+  "test_graph_resolution_and_query": [
+    {
+      "name": "test_graph_resolution_and_query",
+      "kind": "function",
+      "file": "tests/test_graph.py",
+      "line": 13,
+      "doc": "",
+      "args": [],
+      "methods": []
+    }
+  ],
+  "test_cache_incremental": [
+    {
+      "name": "test_cache_incremental",
+      "kind": "function",
+      "file": "tests/test_graph.py",
+      "line": 54,
+      "doc": "",
+      "args": [],
+      "methods": []
+    }
+  ],
+  "test_path_alias_resolution": [
+    {
+      "name": "test_path_alias_resolution",
+      "kind": "function",
+      "file": "tests/test_graph.py",
+      "line": 75,
+      "doc": "",
+      "args": [],
+      "methods": []
+    }
+  ],
+  "test_git_head_tracking": [
+    {
+      "name": "test_git_head_tracking",
+      "kind": "function",
+      "file": "tests/test_graph.py",
+      "line": 105,
+      "doc": "",
+      "args": [],
+      "methods": []
+    }
+  ],
+  "testparsers": [
+    {
+      "name": "TestParsers",
+      "kind": "class",
+      "file": "tests/test_parsers.py",
+      "line": 7,
+      "doc": "",
+      "args": [],
+      "methods": [
+        "test_python_parser",
+        "test_js_ts_parser",
+        "test_generic_parser"
+      ]
+    }
+  ],
+  "test_python_parser": [
+    {
+      "name": "test_python_parser",
+      "kind": "function",
+      "file": "tests/test_parsers.py",
+      "line": 8,
+      "doc": "",
+      "args": [],
+      "methods": []
+    }
+  ],
+  "test_js_ts_parser": [
+    {
+      "name": "test_js_ts_parser",
+      "kind": "function",
+      "file": "tests/test_parsers.py",
+      "line": 42,
+      "doc": "",
+      "args": [],
+      "methods": []
+    }
+  ],
+  "test_generic_parser": [
+    {
+      "name": "test_generic_parser",
+      "kind": "function",
+      "file": "tests/test_parsers.py",
+      "line": 78,
+      "doc": "",
+      "args": [],
+      "methods": []
+    }
+  ]
+}

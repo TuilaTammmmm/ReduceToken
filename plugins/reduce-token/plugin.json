@@ -1,0 +1,21 @@
+{
+  "name": "reduce-token",
+  "displayName": "ReduceToken",
+  "version": "1.0.0",
+  "description": "Tự động phân tích và lưu trữ mạng lưới quan hệ mã nguồn (Knowledge Graph), giúp AI hiểu toàn bộ dự án mà không cần đọc lại toàn bộ folder, tiết kiệm tới 95% token.",
+  "author": {
+    "name": "TuilaTammmmm",
+    "url": "https://github.com/TuilaTammmmm/ReduceToken"
+  },
+  "keywords": [
+    "token-saver",
+    "knowledge-graph",
+    "code-index",
+    "ast-parser",
+    "architecture-map",
+    "copilot",
+    "cursor",
+    "claude",
+    "opencode"
+  ]
+}

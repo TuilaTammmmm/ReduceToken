@@ -1,0 +1,14 @@
+{
+  "decisions": [
+    {
+      "topic": "Architecture",
+      "content": "Used Directed Graph for dependency tracking",
+      "date": "2026-11-16"
+    }
+  ],
+  "touched_files": [],
+  "conventions": [
+    "All internal functions must have type hints"
+  ],
+  "last_updated": "2026-11-16 18:58:21"
+}

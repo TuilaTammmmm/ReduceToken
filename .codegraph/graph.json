@@ -1,0 +1,641 @@
+{
+  "nodes": [
+    {
+      "id": ".agents/rules/token-saver.md",
+      "type": "file",
+      "language": "markdown",
+      "summary": "",
+      "symbols_count": 0,
+      "exports": []
+    },
+    {
+      "id": ".agents/skills/reduce-token/SKILL.md",
+      "type": "file",
+      "language": "markdown",
+      "summary": "",
+      "symbols_count": 0,
+      "exports": []
+    },
+    {
+      "id": ".agents/skills/reduce-token/examples/sample_workflow.md",
+      "type": "file",
+      "language": "markdown",
+      "summary": "",
+      "symbols_count": 0,
+      "exports": []
+    },
+    {
+      "id": ".agents/skills/reduce-token/references/aliases_and_monorepos.md",
+      "type": "file",
+      "language": "markdown",
+      "summary": "",
+      "symbols_count": 0,
+      "exports": []
+    },
+    {
+      "id": ".agents/skills/reduce-token/references/dsl_spec.md",
+      "type": "file",
+      "language": "markdown",
+      "summary": "",
+      "symbols_count": 0,
+      "exports": []
+    },
+    {
+      "id": ".agents/skills/reduce-token/references/memory_guide.md",
+      "type": "file",
+      "language": "markdown",
+      "summary": "",
+      "symbols_count": 0,
+      "exports": []
+    },
+    {
+      "id": ".cursorrules",
+      "type": "file",
+      "language": "unknown",
+      "summary": "",
+      "symbols_count": 0,
+      "exports": []
+    },
+    {
+      "id": ".gitattributes",
+      "type": "file",
+      "language": "unknown",
+      "summary": "",
+      "symbols_count": 0,
+      "exports": []
+    },
+    {
+      "id": ".github/copilot-instructions.md",
+      "type": "file",
+      "language": "markdown",
+      "summary": "",
+      "symbols_count": 0,
+      "exports": []
+    },
+    {
+      "id": ".gitignore",
+      "type": "file",
+      "language": "unknown",
+      "summary": "",
+      "symbols_count": 0,
+      "exports": []
+    },
+    {
+      "id": "AGENTS.md",
+      "type": "file",
+      "language": "markdown",
+      "summary": "",
+      "symbols_count": 0,
+      "exports": []
+    },
+    {
+      "id": "CLAUDE.md",
+      "type": "file",
+      "language": "markdown",
+      "summary": "",
+      "symbols_count": 0,
+      "exports": []
+    },
+    {
+      "id": "GEMINI.md",
+      "type": "file",
+      "language": "markdown",
+      "summary": "",
+      "symbols_count": 0,
+      "exports": []
+    },
+    {
+      "id": "LICENSE",
+      "type": "file",
+      "language": "unknown",
+      "summary": "",
+      "symbols_count": 0,
+      "exports": []
+    },
+    {
+      "id": "README.md",
+      "type": "file",
+      "language": "markdown",
+      "summary": "",
+      "symbols_count": 0,
+      "exports": []
+    },
+    {
+      "id": "plugins/reduce-token/mcp_config.json",
+      "type": "file",
+      "language": "json",
+      "summary": "",
+      "symbols_count": 0,
+      "exports": []
+    },
+    {
+      "id": "plugins/reduce-token/plugin.json",
+      "type": "file",
+      "language": "json",
+      "summary": "",
+      "symbols_count": 0,
+      "exports": []
+    },
+    {
+      "id": "plugins/reduce-token/rules/AGENTS.md",
+      "type": "file",
+      "language": "markdown",
+      "summary": "",
+      "symbols_count": 0,
+      "exports": []
+    },
+    {
+      "id": "plugins/reduce-token/skills/reduce-token/SKILL.md",
+      "type": "file",
+      "language": "markdown",
+      "summary": "",
+      "symbols_count": 0,
+      "exports": []
+    },
+    {
+      "id": "plugins/reduce-token/skills/reduce-token/examples/sample_workflow.md",
+      "type": "file",
+      "language": "markdown",
+      "summary": "",
+      "symbols_count": 0,
+      "exports": []
+    },
+    {
+      "id": "plugins/reduce-token/skills/reduce-token/references/aliases_and_monorepos.md",
+      "type": "file",
+      "language": "markdown",
+      "summary": "",
+      "symbols_count": 0,
+      "exports": []
+    },
+    {
+      "id": "plugins/reduce-token/skills/reduce-token/references/dsl_spec.md",
+      "type": "file",
+      "language": "markdown",
+      "summary": "",
+      "symbols_count": 0,
+      "exports": []
+    },
+    {
+      "id": "plugins/reduce-token/skills/reduce-token/references/memory_guide.md",
+      "type": "file",
+      "language": "markdown",
+      "summary": "",
+      "symbols_count": 0,
+      "exports": []
+    },
+    {
+      "id": "reducetoken/__init__.py",
+      "type": "file",
+      "language": "python",
+      "summary": "ReduceToken - Code Knowledge Graph and Token Saver",
+      "symbols_count": 0,
+      "exports": []
+    },
+    {
+      "id": "reducetoken/agent_adapters.py",
+      "type": "file",
+      "language": "python",
+      "summary": "",
+      "symbols_count": 19,
+      "exports": [
+        "AgentAdapterManager",
+        "__init__",
+        "setup_all",
+        "setup_copilot",
+        "setup_cursor",
+        "setup_claude",
+        "setup_agents",
+        "GlobalAdapterManager",
+        "__init__",
+        "get_plugin_dir",
+        "get_skill_content",
+        "detect_environments",
+        "copy_skill_bundle",
+        "setup_gemini",
+        "setup_cursor",
+        "setup_claude",
+        "setup_opencode",
+        "setup_agents_standard",
+        "setup_all_global"
+      ]
+    },
+    {
+      "id": "reducetoken/cache.py",
+      "type": "file",
+      "language": "python",
+      "summary": "",
+      "symbols_count": 13,
+      "exports": [
+        "calculate_sha256",
+        "analysis_to_dict",
+        "dict_to_analysis",
+        "CacheManager",
+        "__init__",
+        "load",
+        "save",
+        "get_analysis",
+        "is_cached_and_valid",
+        "update_entry",
+        "get_git_head",
+        "check_and_update_git_head",
+        "remove_missing"
+      ]
+    },
+    {
+      "id": "reducetoken/cli.py",
+      "type": "file",
+      "language": "python",
+      "summary": "",
+      "symbols_count": 11,
+      "exports": [
+        "run_pipeline",
+        "install_git_hook",
+        "cmd_init",
+        "cmd_update",
+        "cmd_query",
+        "cmd_overview",
+        "cmd_compact",
+        "cmd_memory",
+        "cmd_git_hook",
+        "cmd_install",
+        "main"
+      ]
+    },
+    {
+      "id": "reducetoken/generator.py",
+      "type": "file",
+      "language": "python",
+      "summary": "",
+      "symbols_count": 9,
+      "exports": [
+        "Generator",
+        "__init__",
+        "generate_all",
+        "_get_top_symbols",
+        "write_architecture_map",
+        "file_sort_key",
+        "write_graph_json",
+        "write_symbols_json",
+        "format_agent_dsl"
+      ]
+    },
+    {
+      "id": "reducetoken/graph.py",
+      "type": "file",
+      "language": "python",
+      "summary": "",
+      "symbols_count": 9,
+      "exports": [
+        "CodeGraph",
+        "__init__",
+        "_load_path_aliases",
+        "add_analysis",
+        "build",
+        "_resolve_import",
+        "query",
+        "get_overview_stats",
+        "to_dict"
+      ]
+    },
+    {
+      "id": "reducetoken/mcp_server.py",
+      "type": "file",
+      "language": "python",
+      "summary": "",
+      "symbols_count": 8,
+      "exports": [
+        "McpServer",
+        "__init__",
+        "_ensure_graph_loaded",
+        "get_architecture_map",
+        "query_graph",
+        "handle_request",
+        "run_stdio",
+        "main"
+      ]
+    },
+    {
+      "id": "reducetoken/memory.py",
+      "type": "file",
+      "language": "python",
+      "summary": "",
+      "symbols_count": 10,
+      "exports": [
+        "SessionMemoryManager",
+        "__init__",
+        "load",
+        "save",
+        "add_decision",
+        "add_convention",
+        "record_touched_file",
+        "compact",
+        "export_markdown",
+        "get_compact_summary"
+      ]
+    },
+    {
+      "id": "reducetoken/parsers/__init__.py",
+      "type": "file",
+      "language": "python",
+      "summary": "",
+      "symbols_count": 3,
+      "exports": [
+        "SymbolInfo",
+        "ImportInfo",
+        "FileAnalysis"
+      ]
+    },
+    {
+      "id": "reducetoken/parsers/generic_parser.py",
+      "type": "file",
+      "language": "python",
+      "summary": "",
+      "symbols_count": 1,
+      "exports": [
+        "parse_generic_file"
+      ]
+    },
+    {
+      "id": "reducetoken/parsers/js_ts_parser.py",
+      "type": "file",
+      "language": "python",
+      "summary": "",
+      "symbols_count": 2,
+      "exports": [
+        "clean_args",
+        "parse_js_ts_file"
+      ]
+    },
+    {
+      "id": "reducetoken/parsers/python_parser.py",
+      "type": "file",
+      "language": "python",
+      "summary": "",
+      "symbols_count": 12,
+      "exports": [
+        "PythonAstVisitor",
+        "__init__",
+        "visit_Module",
+        "visit_Import",
+        "visit_ImportFrom",
+        "visit_ClassDef",
+        "visit_FunctionDef",
+        "visit_AsyncFunctionDef",
+        "_handle_function",
+        "visit_Call",
+        "_get_call_name",
+        "parse_python_file"
+      ]
+    },
+    {
+      "id": "reducetoken/scanner.py",
+      "type": "file",
+      "language": "python",
+      "summary": "",
+      "symbols_count": 7,
+      "exports": [
+        "FileScanner",
+        "__init__",
+        "_load_ignore_files",
+        "_parse_ignore_file",
+        "should_ignore",
+        "is_minified_or_binary",
+        "scan"
+      ]
+    },
+    {
+      "id": "setup.py",
+      "type": "file",
+      "language": "python",
+      "summary": "",
+      "symbols_count": 0,
+      "exports": []
+    },
+    {
+      "id": "tests/test_graph.py",
+      "type": "file",
+      "language": "python",
+      "summary": "",
+      "symbols_count": 5,
+      "exports": [
+        "TestGraphAndCache",
+        "test_graph_resolution_and_query",
+        "test_cache_incremental",
+        "test_path_alias_resolution",
+        "test_git_head_tracking"
+      ]
+    },
+    {
+      "id": "tests/test_parsers.py",
+      "type": "file",
+      "language": "python",
+      "summary": "",
+      "symbols_count": 4,
+      "exports": [
+        "TestParsers",
+        "test_python_parser",
+        "test_js_ts_parser",
+        "test_generic_parser"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "source": "reducetoken/cache.py",
+      "target": "reducetoken/parsers/__init__.py",
+      "relation": "imports"
+    },
+    {
+      "source": "reducetoken/cli.py",
+      "target": "reducetoken/parsers/generic_parser.py",
+      "relation": "imports"
+    },
+    {
+      "source": "reducetoken/cli.py",
+      "target": "reducetoken/cache.py",
+      "relation": "imports"
+    },
+    {
+      "source": "reducetoken/cli.py",
+      "target": "reducetoken/parsers/js_ts_parser.py",
+      "relation": "imports"
+    },
+    {
+      "source": "reducetoken/cli.py",
+      "target": "reducetoken/scanner.py",
+      "relation": "imports"
+    },
+    {
+      "source": "reducetoken/cli.py",
+      "target": "reducetoken/parsers/python_parser.py",
+      "relation": "imports"
+    },
+    {
+      "source": "reducetoken/cli.py",
+      "target": "reducetoken/graph.py",
+      "relation": "imports"
+    },
+    {
+      "source": "reducetoken/cli.py",
+      "target": "reducetoken/agent_adapters.py",
+      "relation": "imports"
+    },
+    {
+      "source": "reducetoken/cli.py",
+      "target": "reducetoken/mcp_server.py",
+      "relation": "imports"
+    },
+    {
+      "source": "reducetoken/cli.py",
+      "target": "reducetoken/memory.py",
+      "relation": "imports"
+    },
+    {
+      "source": "reducetoken/cli.py",
+      "target": "reducetoken/generator.py",
+      "relation": "imports"
+    },
+    {
+      "source": "reducetoken/generator.py",
+      "target": "reducetoken/graph.py",
+      "relation": "imports"
+    },
+    {
+      "source": "reducetoken/graph.py",
+      "target": "reducetoken/parsers/__init__.py",
+      "relation": "imports"
+    },
+    {
+      "source": "reducetoken/mcp_server.py",
+      "target": "reducetoken/parsers/generic_parser.py",
+      "relation": "imports"
+    },
+    {
+      "source": "reducetoken/mcp_server.py",
+      "target": "reducetoken/cache.py",
+      "relation": "imports"
+    },
+    {
+      "source": "reducetoken/mcp_server.py",
+      "target": "reducetoken/parsers/js_ts_parser.py",
+      "relation": "imports"
+    },
+    {
+      "source": "reducetoken/mcp_server.py",
+      "target": "reducetoken/parsers/python_parser.py",
+      "relation": "imports"
+    },
+    {
+      "source": "reducetoken/mcp_server.py",
+      "target": "reducetoken/scanner.py",
+      "relation": "imports"
+    },
+    {
+      "source": "reducetoken/mcp_server.py",
+      "target": "reducetoken/graph.py",
+      "relation": "imports"
+    },
+    {
+      "source": "reducetoken/mcp_server.py",
+      "target": "reducetoken/memory.py",
+      "relation": "imports"
+    },
+    {
+      "source": "reducetoken/mcp_server.py",
+      "target": "reducetoken/generator.py",
+      "relation": "imports"
+    },
+    {
+      "source": "reducetoken/parsers/generic_parser.py",
+      "target": "reducetoken/parsers/__init__.py",
+      "relation": "imports"
+    },
+    {
+      "source": "reducetoken/parsers/js_ts_parser.py",
+      "target": "reducetoken/parsers/__init__.py",
+      "relation": "imports"
+    },
+    {
+      "source": "reducetoken/parsers/python_parser.py",
+      "target": "reducetoken/parsers/__init__.py",
+      "relation": "imports"
+    },
+    {
+      "source": "tests/test_graph.py",
+      "target": "reducetoken/cache.py",
+      "relation": "imports"
+    },
+    {
+      "source": "tests/test_graph.py",
+      "target": "reducetoken/parsers/__init__.py",
+      "relation": "imports"
+    },
+    {
+      "source": "tests/test_graph.py",
+      "target": "reducetoken/graph.py",
+      "relation": "imports"
+    },
+    {
+      "source": "tests/test_graph.py",
+      "target": "reducetoken/generator.py",
+      "relation": "imports"
+    },
+    {
+      "source": "tests/test_parsers.py",
+      "target": "reducetoken/parsers/js_ts_parser.py",
+      "relation": "imports"
+    },
+    {
+      "source": "tests/test_parsers.py",
+      "target": "reducetoken/parsers/generic_parser.py",
+      "relation": "imports"
+    },
+    {
+      "source": "tests/test_parsers.py",
+      "target": "reducetoken/parsers/python_parser.py",
+      "relation": "imports"
+    }
+  ],
+  "stats": {
+    "total_files": 39,
+    "total_symbols": 113,
+    "entry_points": [
+      "reducetoken/cli.py"
+    ],
+    "core_modules": [
+      {
+        "file": "reducetoken/parsers/__init__.py",
+        "dependent_count": 6
+      },
+      {
+        "file": "reducetoken/graph.py",
+        "dependent_count": 4
+      },
+      {
+        "file": "reducetoken/cache.py",
+        "dependent_count": 3
+      },
+      {
+        "file": "reducetoken/generator.py",
+        "dependent_count": 3
+      },
+      {
+        "file": "reducetoken/parsers/python_parser.py",
+        "dependent_count": 3
+      },
+      {
+        "file": "reducetoken/parsers/js_ts_parser.py",
+        "dependent_count": 3
+      },
+      {
+        "file": "reducetoken/parsers/generic_parser.py",
+        "dependent_count": 3
+      },
+      {
+        "file": "reducetoken/scanner.py",
+        "dependent_count": 2
+      }
+    ]
+  }
+}
