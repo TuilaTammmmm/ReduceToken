@@ -9,11 +9,13 @@
       "args": [],
       "methods": [
         "__init__",
-        "setup_all",
+        "is_global_active",
         "setup_copilot",
         "setup_cursor",
         "setup_claude",
-        "setup_agents"
+        "setup_agents",
+        "setup_all",
+        "setup_by_agent"
       ]
     }
   ],
@@ -33,7 +35,7 @@
       "name": "__init__",
       "kind": "function",
       "file": "reducetoken/agent_adapters.py",
-      "line": 92,
+      "line": 137,
       "doc": "",
       "args": [
         "home_dir"
@@ -120,13 +122,13 @@
       "methods": []
     }
   ],
-  "setup_all": [
+  "is_global_active": [
     {
-      "name": "setup_all",
+      "name": "is_global_active",
       "kind": "function",
       "file": "reducetoken/agent_adapters.py",
       "line": 59,
-      "doc": "",
+      "doc": "Check if ReduceToken plugin is already installed globally.",
       "args": [],
       "methods": []
     }
@@ -136,7 +138,7 @@
       "name": "setup_copilot",
       "kind": "function",
       "file": "reducetoken/agent_adapters.py",
-      "line": 65,
+      "line": 69,
       "doc": "",
       "args": [],
       "methods": []
@@ -147,16 +149,18 @@
       "name": "setup_cursor",
       "kind": "function",
       "file": "reducetoken/agent_adapters.py",
-      "line": 71,
+      "line": 75,
       "doc": "",
-      "args": [],
+      "args": [
+        "modern"
+      ],
       "methods": []
     },
     {
       "name": "setup_cursor",
       "kind": "function",
       "file": "reducetoken/agent_adapters.py",
-      "line": 174,
+      "line": 219,
       "doc": "",
       "args": [],
       "methods": []
@@ -167,7 +171,7 @@
       "name": "setup_claude",
       "kind": "function",
       "file": "reducetoken/agent_adapters.py",
-      "line": 76,
+      "line": 87,
       "doc": "",
       "args": [],
       "methods": []
@@ -176,7 +180,7 @@
       "name": "setup_claude",
       "kind": "function",
       "file": "reducetoken/agent_adapters.py",
-      "line": 193,
+      "line": 238,
       "doc": "",
       "args": [],
       "methods": []
@@ -187,9 +191,39 @@
       "name": "setup_agents",
       "kind": "function",
       "file": "reducetoken/agent_adapters.py",
-      "line": 81,
+      "line": 92,
       "doc": "",
-      "args": [],
+      "args": [
+        "hidden_only"
+      ],
+      "methods": []
+    }
+  ],
+  "setup_all": [
+    {
+      "name": "setup_all",
+      "kind": "function",
+      "file": "reducetoken/agent_adapters.py",
+      "line": 107,
+      "doc": "",
+      "args": [
+        "modern",
+        "root_rules"
+      ],
+      "methods": []
+    }
+  ],
+  "setup_by_agent": [
+    {
+      "name": "setup_by_agent",
+      "kind": "function",
+      "file": "reducetoken/agent_adapters.py",
+      "line": 116,
+      "doc": "Set up instructions for specific agent or all.",
+      "args": [
+        "agent",
+        "root_rules"
+      ],
       "methods": []
     }
   ],
@@ -198,7 +232,7 @@
       "name": "GlobalAdapterManager",
       "kind": "class",
       "file": "reducetoken/agent_adapters.py",
-      "line": 90,
+      "line": 135,
       "doc": "Installs ReduceToken skills and rules globally across all major AI coding agents.",
       "args": [],
       "methods": [
@@ -221,7 +255,7 @@
       "name": "get_plugin_dir",
       "kind": "function",
       "file": "reducetoken/agent_adapters.py",
-      "line": 96,
+      "line": 141,
       "doc": "",
       "args": [],
       "methods": []
@@ -232,7 +266,7 @@
       "name": "get_skill_content",
       "kind": "function",
       "file": "reducetoken/agent_adapters.py",
-      "line": 105,
+      "line": 150,
       "doc": "",
       "args": [],
       "methods": []
@@ -243,7 +277,7 @@
       "name": "detect_environments",
       "kind": "function",
       "file": "reducetoken/agent_adapters.py",
-      "line": 115,
+      "line": 160,
       "doc": "Detects which AI tools/environments are installed or present on this machine.",
       "args": [],
       "methods": []
@@ -254,7 +288,7 @@
       "name": "copy_skill_bundle",
       "kind": "function",
       "file": "reducetoken/agent_adapters.py",
-      "line": 145,
+      "line": 190,
       "doc": "Copies SKILL.md and references/ directory to the destination.",
       "args": [
         "dest_skill_dir"
@@ -267,7 +301,7 @@
       "name": "setup_gemini",
       "kind": "function",
       "file": "reducetoken/agent_adapters.py",
-      "line": 158,
+      "line": 203,
       "doc": "",
       "args": [],
       "methods": []
@@ -278,7 +312,7 @@
       "name": "setup_opencode",
       "kind": "function",
       "file": "reducetoken/agent_adapters.py",
-      "line": 202,
+      "line": 247,
       "doc": "",
       "args": [],
       "methods": []
@@ -289,7 +323,7 @@
       "name": "setup_agents_standard",
       "kind": "function",
       "file": "reducetoken/agent_adapters.py",
-      "line": 224,
+      "line": 269,
       "doc": "",
       "args": [],
       "methods": []
@@ -300,7 +334,7 @@
       "name": "setup_all_global",
       "kind": "function",
       "file": "reducetoken/agent_adapters.py",
-      "line": 233,
+      "line": 278,
       "doc": "",
       "args": [],
       "methods": []
@@ -492,7 +526,7 @@
       "name": "run_pipeline",
       "kind": "function",
       "file": "reducetoken/cli.py",
-      "line": 17,
+      "line": 18,
       "doc": "",
       "args": [
         "root_dir",
@@ -507,7 +541,7 @@
       "name": "install_git_hook",
       "kind": "function",
       "file": "reducetoken/cli.py",
-      "line": 79,
+      "line": 80,
       "doc": "",
       "args": [
         "root_dir"
@@ -520,7 +554,7 @@
       "name": "cmd_init",
       "kind": "function",
       "file": "reducetoken/cli.py",
-      "line": 96,
+      "line": 97,
       "doc": "",
       "args": [
         "args"
@@ -533,7 +567,7 @@
       "name": "cmd_update",
       "kind": "function",
       "file": "reducetoken/cli.py",
-      "line": 123,
+      "line": 145,
       "doc": "",
       "args": [
         "args"
@@ -546,7 +580,7 @@
       "name": "cmd_query",
       "kind": "function",
       "file": "reducetoken/cli.py",
-      "line": 128,
+      "line": 150,
       "doc": "",
       "args": [
         "args"
@@ -559,7 +593,7 @@
       "name": "cmd_overview",
       "kind": "function",
       "file": "reducetoken/cli.py",
-      "line": 137,
+      "line": 159,
       "doc": "",
       "args": [
         "args"
@@ -572,7 +606,7 @@
       "name": "cmd_compact",
       "kind": "function",
       "file": "reducetoken/cli.py",
-      "line": 146,
+      "line": 168,
       "doc": "",
       "args": [
         "args"
@@ -585,7 +619,7 @@
       "name": "cmd_memory",
       "kind": "function",
       "file": "reducetoken/cli.py",
-      "line": 154,
+      "line": 176,
       "doc": "",
       "args": [
         "args"
@@ -598,7 +632,7 @@
       "name": "cmd_git_hook",
       "kind": "function",
       "file": "reducetoken/cli.py",
-      "line": 169,
+      "line": 191,
       "doc": "",
       "args": [
         "args"
@@ -611,7 +645,20 @@
       "name": "cmd_install",
       "kind": "function",
       "file": "reducetoken/cli.py",
-      "line": 186,
+      "line": 208,
+      "doc": "",
+      "args": [
+        "args"
+      ],
+      "methods": []
+    }
+  ],
+  "cmd_upgrade": [
+    {
+      "name": "cmd_upgrade",
+      "kind": "function",
+      "file": "reducetoken/cli.py",
+      "line": 288,
       "doc": "",
       "args": [
         "args"
@@ -624,7 +671,7 @@
       "name": "main",
       "kind": "function",
       "file": "reducetoken/cli.py",
-      "line": 266,
+      "line": 305,
       "doc": "",
       "args": [],
       "methods": []
@@ -663,7 +710,7 @@
       "name": "generate_all",
       "kind": "function",
       "file": "reducetoken/generator.py",
-      "line": 18,
+      "line": 19,
       "doc": "",
       "args": [],
       "methods": []
@@ -674,7 +721,7 @@
       "name": "_get_top_symbols",
       "kind": "function",
       "file": "reducetoken/generator.py",
-      "line": 25,
+      "line": 26,
       "doc": "",
       "args": [
         "analysis"
@@ -687,7 +734,7 @@
       "name": "write_architecture_map",
       "kind": "function",
       "file": "reducetoken/generator.py",
-      "line": 41,
+      "line": 42,
       "doc": "",
       "args": [],
       "methods": []
@@ -698,7 +745,7 @@
       "name": "file_sort_key",
       "kind": "function",
       "file": "reducetoken/generator.py",
-      "line": 73,
+      "line": 74,
       "doc": "",
       "args": [
         "file_path"
@@ -711,7 +758,7 @@
       "name": "write_graph_json",
       "kind": "function",
       "file": "reducetoken/generator.py",
-      "line": 105,
+      "line": 106,
       "doc": "",
       "args": [],
       "methods": []
@@ -722,7 +769,7 @@
       "name": "write_symbols_json",
       "kind": "function",
       "file": "reducetoken/generator.py",
-      "line": 112,
+      "line": 113,
       "doc": "",
       "args": [],
       "methods": []
@@ -733,7 +780,7 @@
       "name": "format_agent_dsl",
       "kind": "function",
       "file": "reducetoken/generator.py",
-      "line": 119,
+      "line": 120,
       "doc": "Format subgraph query result as ultra-compact text (~50-80 tokens).",
       "args": [
         "query_result"
@@ -1332,6 +1379,66 @@
       "methods": []
     }
   ],
+  "testagentadapters": [
+    {
+      "name": "TestAgentAdapters",
+      "kind": "class",
+      "file": "tests/test_adapters.py",
+      "line": 7,
+      "doc": "",
+      "args": [],
+      "methods": [
+        "test_clean_mode_no_files",
+        "test_cursor_modern_encapsulation",
+        "test_agents_standard_hidden_encapsulation",
+        "test_legacy_root_rules"
+      ]
+    }
+  ],
+  "test_clean_mode_no_files": [
+    {
+      "name": "test_clean_mode_no_files",
+      "kind": "function",
+      "file": "tests/test_adapters.py",
+      "line": 8,
+      "doc": "",
+      "args": [],
+      "methods": []
+    }
+  ],
+  "test_cursor_modern_encapsulation": [
+    {
+      "name": "test_cursor_modern_encapsulation",
+      "kind": "function",
+      "file": "tests/test_adapters.py",
+      "line": 17,
+      "doc": "",
+      "args": [],
+      "methods": []
+    }
+  ],
+  "test_agents_standard_hidden_encapsulation": [
+    {
+      "name": "test_agents_standard_hidden_encapsulation",
+      "kind": "function",
+      "file": "tests/test_adapters.py",
+      "line": 27,
+      "doc": "",
+      "args": [],
+      "methods": []
+    }
+  ],
+  "test_legacy_root_rules": [
+    {
+      "name": "test_legacy_root_rules",
+      "kind": "function",
+      "file": "tests/test_adapters.py",
+      "line": 38,
+      "doc": "",
+      "args": [],
+      "methods": []
+    }
+  ],
   "testgraphandcache": [
     {
       "name": "TestGraphAndCache",
@@ -1344,7 +1451,8 @@
         "test_graph_resolution_and_query",
         "test_cache_incremental",
         "test_path_alias_resolution",
-        "test_git_head_tracking"
+        "test_git_head_tracking",
+        "test_utf8_preservation_in_json"
       ]
     }
   ],
@@ -1392,6 +1500,17 @@
       "methods": []
     }
   ],
+  "test_utf8_preservation_in_json": [
+    {
+      "name": "test_utf8_preservation_in_json",
+      "kind": "function",
+      "file": "tests/test_graph.py",
+      "line": 123,
+      "doc": "",
+      "args": [],
+      "methods": []
+    }
+  ],
   "testparsers": [
     {
       "name": "TestParsers",
@@ -1403,6 +1522,7 @@
       "methods": [
         "test_python_parser",
         "test_js_ts_parser",
+        "test_unicode_vietnamese",
         "test_generic_parser"
       ]
     }
@@ -1429,12 +1549,23 @@
       "methods": []
     }
   ],
+  "test_unicode_vietnamese": [
+    {
+      "name": "test_unicode_vietnamese",
+      "kind": "function",
+      "file": "tests/test_parsers.py",
+      "line": 78,
+      "doc": "",
+      "args": [],
+      "methods": []
+    }
+  ],
   "test_generic_parser": [
     {
       "name": "test_generic_parser",
       "kind": "function",
       "file": "tests/test_parsers.py",
-      "line": 78,
+      "line": 93,
       "doc": "",
       "args": [],
       "methods": []

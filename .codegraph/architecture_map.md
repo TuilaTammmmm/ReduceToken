@@ -2,8 +2,8 @@
 > **AI Token-Saving Notice**: This repository is indexed by ReduceToken. Do NOT scan the full folder. Consult this map or run `rt query <symbol>` (or `reducetoken query`) to find exact code paths.
 
 ## 1. Quick Stats
-- **Indexed Files**: 39
-- **Indexed Symbols**: 113
+- **Indexed Files**: 40
+- **Indexed Symbols**: 123
 - **Entry Points**: reducetoken/cli.py
 - **Core Modules**: `reducetoken/parsers/__init__.py` (6 refs), `reducetoken/graph.py` (4 refs), `reducetoken/cache.py` (3 refs), `reducetoken/generator.py` (3 refs), `reducetoken/parsers/python_parser.py` (3 refs), `reducetoken/parsers/js_ts_parser.py` (3 refs), `reducetoken/parsers/generic_parser.py` (3 refs), `reducetoken/scanner.py` (2 refs)
 
@@ -38,7 +38,7 @@
 - `plugins/reduce-token/skills/reduce-token/SKILL.md`
 ### `reducetoken` (13 files)
 - `reducetoken/__init__.py` — ReduceToken - Code Knowledge Graph and Token Saver
-- `reducetoken/agent_adapters.py` — defines: `AgentAdapterManager, GlobalAdapterManager, __init__, setup_all`
+- `reducetoken/agent_adapters.py` — defines: `AgentAdapterManager, GlobalAdapterManager, __init__, is_global_active`
 - `reducetoken/cache.py` — defines: `CacheManager, calculate_sha256, analysis_to_dict, dict_to_analysis`
 - `reducetoken/cli.py` — defines: `run_pipeline, install_git_hook, cmd_init, cmd_update`
 - `reducetoken/generator.py` — defines: `Generator, __init__, generate_all, _get_top_symbols`
@@ -48,9 +48,10 @@
 - `reducetoken/parsers/__init__.py` — defines: `SymbolInfo, ImportInfo, FileAnalysis`
 - `reducetoken/parsers/generic_parser.py` — defines: `parse_generic_file`
 - *(+3 more files)*
-### `tests` (2 files)
+### `tests` (3 files)
+- `tests/test_adapters.py` — defines: `TestAgentAdapters, test_clean_mode_no_files, test_cursor_modern_encapsulation, test_agents_standard_hidden_encapsulation`
 - `tests/test_graph.py` — defines: `TestGraphAndCache, test_graph_resolution_and_query, test_cache_incremental, test_path_alias_resolution`
-- `tests/test_parsers.py` — defines: `TestParsers, test_python_parser, test_js_ts_parser, test_generic_parser`
+- `tests/test_parsers.py` — defines: `TestParsers, test_python_parser, test_js_ts_parser, test_unicode_vietnamese`
 
 ## 3. How to Query
 - Find where a symbol/function is: `rt query <symbol_name>` (or `reducetoken query`)

@@ -1,4 +1,5 @@
 import argparse
+import subprocess
 import sys
 import time
 from pathlib import Path
@@ -98,10 +99,6 @@ def cmd_init(args):
     print(f"Initializing ReduceToken in: {root_dir}")
     graph = run_pipeline(root_dir, force=args.force, verbose=True)
 
-    # Setup agent rules
-    adapters = AgentAdapterManager(root_dir)
-    adapters.setup_all()
-
     # Initialize memory context
     mem = SessionMemoryManager(root_dir)
     mem.export_markdown()
@@ -110,11 +107,36 @@ def cmd_init(args):
     if install_git_hook(root_dir):
         print("  - Git post-commit hook auto-installed (Zero-effort background sync)")
 
-    print("Generated AI rule files:")
-    print("  - .github/copilot-instructions.md (GitHub Copilot)")
-    print("  - .cursorrules (Cursor IDE)")
-    print("  - CLAUDE.md (Claude Code)")
-    print("  - AGENTS.md & GEMINI.md (Antigravity & OpenCode)")
+    # Setup agent rules with clean encapsulation
+    adapters = AgentAdapterManager(root_dir)
+    agent_target = "clean" if getattr(args, "clean", False) else getattr(args, "agent", "auto")
+    root_rules = getattr(args, "root_rules", False)
+
+    created_rules = []
+    if agent_target in ("clean", "none"):
+        print("  - Clean mode: zero rule files generated in project root.")
+    elif agent_target == "auto":
+        if adapters.is_global_active() and not root_rules:
+            print("  [✓] Global AI Plugin detected — zero root file clutter needed!")
+        else:
+            # Safe clean default: use hidden directories to avoid polluting root
+            created_rules.extend(adapters.setup_agents(hidden_only=not root_rules))
+            if (root_dir / ".cursor").is_dir():
+                created_rules.append(adapters.setup_cursor(modern=not root_rules))
+            if (root_dir / ".git").is_dir() and (root_dir / ".github").is_dir():
+                created_rules.append(adapters.setup_copilot())
+    else:
+        created_rules = adapters.setup_by_agent(agent_target, root_rules=root_rules)
+
+    if created_rules:
+        print("Generated AI rule files:")
+        for r in created_rules:
+            try:
+                rel = r.relative_to(root_dir)
+            except ValueError:
+                rel = r
+            print(f"  - {rel}")
+
     print("Architecture map created at: .codegraph/architecture_map.md")
     print("Session context memory at: .codegraph/session_context.md")
     print("Initialization complete! 100% automated — your AI now saves up to 95% tokens.")
@@ -263,6 +285,23 @@ def cmd_install(args):
     print("\nSetup complete for selected target(s)!")
 
 
+def cmd_upgrade(args):
+    print("--> Upgrading ReduceToken CLI from Git...")
+    repo_url = "git+https://github.com/TuilaTammmmm/ReduceToken.git"
+    cmd = [sys.executable, "-m", "pip", "install", "--upgrade", repo_url]
+    ret = subprocess.run(cmd)
+    if ret.returncode == 0:
+        print("\n[OK] ReduceToken package upgraded successfully.")
+        print("--> Synchronizing global AI plugins & skills (Antigravity, Cursor, Claude, OpenCode)...")
+        manager = AgentAdapterManager()
+        results = manager.setup_all_global()
+        for agent, path in results.items():
+            print(f"  [OK] {agent:35}: {path}")
+        print("\nUpgrade complete! You are running the latest version of ReduceToken.")
+    else:
+        print("\n[Error] Failed to upgrade via pip. Please verify internet connection or Git access.", file=sys.stderr)
+
+
 def main():
     parser = argparse.ArgumentParser(
         prog="reducetoken",
@@ -275,6 +314,14 @@ def main():
     # init
     p_init = subparsers.add_parser("init", help="Scan repository, build graph, and setup AI instructions")
     p_init.add_argument("--force", "-f", action="store_true", help="Force reparse all files ignoring cache")
+    p_init.add_argument("--clean", "-c", action="store_true", help="Clean mode: only create .codegraph/, no rule files")
+    p_init.add_argument(
+        "--agent", "-a",
+        default="auto",
+        choices=["auto", "clean", "none", "antigravity", "cursor", "claude", "copilot", "all"],
+        help="Target AI agent for rule generation (default: auto detect, zero clutter if global plugin exists)"
+    )
+    p_init.add_argument("--root-rules", action="store_true", help="Generate legacy rule files directly in project root")
 
     # update
     subparsers.add_parser("update", help="Incrementally update graph for changed files")
@@ -306,12 +353,17 @@ def main():
     p_inst.add_argument("--global", "-g", dest="global_plugin", action="store_true", help="Install global Antigravity plugin to ~/.gemini/config/plugins")
     p_inst.add_argument("--force", "-f", action="store_true", help="Force reparse all files ignoring cache (for local init)")
 
+    # upgrade
+    subparsers.add_parser("upgrade", help="Self-upgrade ReduceToken package and refresh global AI plugins from Git")
+
     args = parser.parse_args()
 
     if args.command == "init":
         cmd_init(args)
     elif args.command == "install":
         cmd_install(args)
+    elif args.command == "upgrade":
+        cmd_upgrade(args)
     elif args.command == "update":
         cmd_update(args)
     elif args.command == "query":

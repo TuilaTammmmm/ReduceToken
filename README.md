@@ -70,7 +70,8 @@ Once installed, open a terminal in any repository where you want your AI to save
 ```bash
 rt init
 ```
-*This scans your code, generates `.codegraph/architecture_map.md`, and sets up local AI rules (`.cursorrules`, `CLAUDE.md`, `AGENTS.md`, `copilot-instructions.md`).*
+*Scans your code and generates `.codegraph/` (clean & clutter-free: automatically detects global AI plugins so zero rule files are dumped into your project root!).*
+*Options: `rt init --clean` (pure `.codegraph/`), `rt init --agent cursor` (target specific tool), or `rt init --agent all`.*
 
 ---
 

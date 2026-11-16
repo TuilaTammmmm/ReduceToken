@@ -56,11 +56,15 @@ class AgentAdapterManager:
     def __init__(self, root_dir: Path):
         self.root_dir = Path(root_dir)
 
-    def setup_all(self):
-        self.setup_copilot()
-        self.setup_cursor()
-        self.setup_claude()
-        self.setup_agents()
+    def is_global_active(self) -> bool:
+        """Check if ReduceToken plugin is already installed globally."""
+        home = Path.home()
+        candidates = [
+            home / ".gemini" / "config" / "plugins" / "reduce-token",
+            home / ".agents" / "skills" / "reduce-token",
+            home / ".config" / "opencode" / "skills" / "reduce-token",
+        ]
+        return any(c.is_dir() for c in candidates)
 
     def setup_copilot(self) -> Path:
         p = self.root_dir / ".github" / "copilot-instructions.md"
@@ -68,23 +72,64 @@ class AgentAdapterManager:
         p.write_text(COPILOT_INSTRUCTION, encoding="utf-8")
         return p
 
-    def setup_cursor(self) -> Path:
-        p = self.root_dir / ".cursorrules"
-        p.write_text(CURSOR_RULES, encoding="utf-8")
-        return p
+    def setup_cursor(self, modern: bool = True) -> Path:
+        if modern:
+            rules_dir = self.root_dir / ".cursor" / "rules"
+            rules_dir.mkdir(parents=True, exist_ok=True)
+            p = rules_dir / "token-saver.mdc"
+            p.write_text(CURSOR_RULES, encoding="utf-8")
+            return p
+        else:
+            p = self.root_dir / ".cursorrules"
+            p.write_text(CURSOR_RULES, encoding="utf-8")
+            return p
 
     def setup_claude(self) -> Path:
         p = self.root_dir / "CLAUDE.md"
         p.write_text(CLAUDE_INSTRUCTION, encoding="utf-8")
         return p
 
-    def setup_agents(self) -> List[Path]:
+    def setup_agents(self, hidden_only: bool = True) -> List[Path]:
         files = []
-        for name in ("AGENTS.md", "GEMINI.md"):
-            p = self.root_dir / name
+        if hidden_only:
+            # Clean standard: store in hidden .agents/rules/
+            p = self.root_dir / ".agents" / "rules" / "token-saver.md"
+            p.parent.mkdir(parents=True, exist_ok=True)
             p.write_text(AGENTS_INSTRUCTION, encoding="utf-8")
             files.append(p)
+        else:
+            for name in ("AGENTS.md", "GEMINI.md"):
+                p = self.root_dir / name
+                p.write_text(AGENTS_INSTRUCTION, encoding="utf-8")
+                files.append(p)
         return files
+
+    def setup_all(self, modern: bool = True, root_rules: bool = False) -> List[Path]:
+        created = [
+            self.setup_copilot(),
+            self.setup_cursor(modern=modern and not root_rules),
+            self.setup_claude(),
+        ]
+        created.extend(self.setup_agents(hidden_only=not root_rules))
+        return created
+
+    def setup_by_agent(self, agent: str, root_rules: bool = False) -> List[Path]:
+        """Set up instructions for specific agent or all."""
+        agent = agent.lower().strip()
+        created = []
+        if agent in ("none", "clean"):
+            return created
+        if agent == "all":
+            return self.setup_all(modern=not root_rules, root_rules=root_rules)
+        if agent in ("antigravity", "gemini", "opencode", "agents"):
+            created.extend(self.setup_agents(hidden_only=not root_rules))
+        elif agent == "cursor":
+            created.append(self.setup_cursor(modern=not root_rules))
+        elif agent == "claude":
+            created.append(self.setup_claude())
+        elif agent == "copilot":
+            created.append(self.setup_copilot())
+        return created
 
 
 class GlobalAdapterManager:
