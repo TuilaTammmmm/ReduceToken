@@ -71,10 +71,6 @@ Once installed, open a terminal in any repository where you want your AI to save
 rt init
 ```
 *This scans your code, generates `.codegraph/architecture_map.md`, and sets up local AI rules (`.cursorrules`, `CLAUDE.md`, `AGENTS.md`, `copilot-instructions.md`).*
-```
-
-#### GitHub Copilot
-`reducetoken init` automatically writes `.github/copilot-instructions.md`, directing Copilot to query `.codegraph/` first.
 
 ---
 
@@ -86,7 +82,7 @@ rt init
 | **Architecture Discovery** | Bird's-eye view of all modules, entry points, and directory clusters (<1,000 tokens) | *"Give me an architectural overview of this codebase."*<br>*"Which module handles token verification and database migrations?"* |
 | **Persistent Session Memory** | Long-term memory for architectural decisions and coding conventions (~150 tokens) | *"Record our decision to use WebSockets instead of polling in project memory."*<br>*"Add a coding convention: All coordinate variables must be in millimeters."* |
 | **Memory Compaction** | Summarizes project decisions and updates compact context for fresh chat tabs | *"Compact our session memory so we can start a clean conversation."* |
-| **Autonomous Background Sync** | Sub-10ms delta check and graph update on modified files | *"Refactor the auth middleware."* *(AI autonomously executes `reducetoken update` in the background).* |
+| **Autonomous Background Sync** | Sub-10ms delta check and graph update on modified files | *"Refactor the auth middleware."* *(AI autonomously executes `rt update` in the background).* |
 
 ---
 
@@ -106,7 +102,7 @@ flowchart TD
     Discovery --> Query
 
     subgraph Query ["2. Subgraph Query (~60 tokens)"]
-        ExecQuery["reducetoken query <symbol_or_keyword>"]
+        ExecQuery["rt query <symbol_or_keyword>"]
         DSLOutput["Returns Agent DSL Block:\n- TARGET FILE & Line [Lxx]\n- 1-hop IMPORTS & IMPORTED BY"]
     end
 
@@ -120,8 +116,8 @@ flowchart TD
     TargetedRead --> AutoSync
 
     subgraph AutoSync ["4. Autonomous Background Maintenance (<100ms)"]
-        SyncGraph["reducetoken update\n(Incremental cache & graph sync)"]
-        SaveMem["reducetoken memory add / conv\n(Auto-records architectural decisions)"]
+        SyncGraph["rt update\n(Incremental cache & graph sync)"]
+        SaveMem["rt memory add / conv\n(Auto-records architectural decisions)"]
     end
 
     AutoSync --> Done([Concise Diff & Solution Output])
