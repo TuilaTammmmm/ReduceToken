@@ -1,5 +1,7 @@
 # ReduceToken
 
+**English** | **[Tiếng Việt](README_VI.md)**
+
 A lightweight, autonomous Code Knowledge Graph and Persistent Session Memory for AI coding agents, following the [Agent Skills](https://agentskills.io) open standard. Compatible with **Google Antigravity**, **Cursor IDE**, **Claude Code**, **OpenCode**, **Codex**, and **GitHub Copilot**.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
