@@ -133,6 +133,70 @@ Dashboard điều khiển con trỏ kiểu OpenCode ngay trong terminal:
 * Điều hướng bằng phím mũi tên (`↑/↓` hoặc `j/k`), hỗ trợ phím số nhanh `1-7`, `0` để thoát.
 * Tìm kiếm Subgraph, vẽ sơ đồ hộp ASCII Box 2 chiều, kiểm tra sức khỏe hệ thống (Doctor), xem và nén bộ nhớ.
 
+```text
+┌──────────────────────────────────────────────────────────────────────────────────────┐
+│                   REDUCETOKEN - CODE KNOWLEDGE GRAPH & TOKEN SAVER                   │
+└──────────────────────────────────────────────────────────────────────────────────────┘
+ [ Files: 45 | Symbols: 201 | God Nodes: 7 | Memory: 9 decisions ]
+
+Use [↑/↓] or [1-7] to navigate, [Enter] to select, [q] to exit:
+
+❯ [1]  Search & Draw Subgraph      (Interactive file / symbol query)
+  [2]  Visual Dependency Tree      (Full project hierarchical dependency tree)
+  [3]  Open Interactive Web Graph  (Standalone HTML5 Canvas in browser)
+  [4]  Architecture & God Nodes    (Chokepoint modules & entry points)
+  [5]  Session Memory & Decisions  (View conventions & architectural agreements)
+  [6]  System Doctor & AI Plugins  (Integrity check & AI agent statuses)
+  [7]  Clean Cache & Rebuild       (Wipe cache and re-index whole repo)
+  [q]  Exit
+```
+
+### 3. Sơ đồ hộp ASCII Dependency Graph (`rt graph <symbol_hoặc_file>`)
+Biểu đồ khối hộp 2 chiều trực quan ngay trên terminal thể hiện callers, dependencies và định nghĩa:
+```text
+┌──────────────────────────────────────────────────────────────────────────────┐
+│                       TARGET FILE: reducetoken/cli.py                        │
+└──────────────────────────────────────────────────────────────────────────────┘
+          ▲
+          │ (được import & gọi bởi)
+┌─ INCOMING CALLERS (3) ───────────────────────────────────────────────────────┐
+│  ├── 📄 reducetoken/tui.py
+│  ├── 📄 reducetoken/web_visualizer.py
+│  ├── 📄 tests/test_cli.py
+└──────────────────────────────────────────────────────────────────────────────┘
+          │
+          ▼ (yêu cầu / import các module)
+┌─ OUTGOING DEPENDENCIES (12) ─────────────────────────────────────────────────┐
+│  ├── 📦 reducetoken/agent_adapters.py
+│  ├── 📦 reducetoken/cache.py
+│  ├── 📦 reducetoken/generator.py
+│  ├── 📦 reducetoken/graph.py
+│  ├── 📦 reducetoken/mcp_server.py
+│  └── ... và 7 modules khác
+└──────────────────────────────────────────────────────────────────────────────┘
+
+Defined Symbols in 'reducetoken/cli.py' (19):
+  • [function] run_pipeline (L18)
+  • [function] cmd_query (L151)
+  • [function] cmd_web (L185)
+  • [function] cmd_upgrade (L543)
+```
+
+### 4. Cây quan hệ phân cấp toàn dự án (`rt tree [thư_mục]`)
+```text
+📦 Project Knowledge Graph Dependency Tree
+└── 📂 reducetoken/
+    ├── 📄 cache.py (13 syms)
+    │   ├── 🔹 def: CacheManager, calculate_sha256
+    │   └── ◀── Used By: cli.py, mcp_server.py, test_graph.py
+    ├── 📄 cli.py (19 syms)
+    │   ├── ──▶ Imports: agent_adapters.py, cache.py, generator.py (+8)
+    │   └── ◀── Used By: tui.py, web_visualizer.py, test_cli.py
+    └── 📄 web_visualizer.py (4 syms)
+        ├── 🔹 def: generate_web_graph_html, launch_browser
+        └── ◀── Used By: cli.py, generator.py, tui.py
+```
+
 ---
 
 ## 🎯 Các tính năng cốt lõi & Ví dụ câu lệnh

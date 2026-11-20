@@ -2,7 +2,7 @@
 > **AI Token-Saving Notice**: This repository is indexed by ReduceToken. Do NOT scan the full folder. Consult this map or run `rt query <symbol>` (or `reducetoken query`) to find exact code paths.
 
 ## 1. Quick Stats
-- **Indexed Files**: 46
+- **Indexed Files**: 45
 - **Indexed Symbols**: 173
 - **Entry Points**: reducetoken/cli.py
 
@@ -17,14 +17,13 @@
 - `reducetoken/tui.py` — **Central Orchestrator** (In: 2 callers, Out: 6 deps)
 
 ## 3. Module Directory Structure
-### `(root)` (10 files)
+### `(root)` (9 files)
 - `.gitattributes`
 - `setup.py`
 - `.cursorrules`
 - `.gitignore`
 - `AGENTS.md`
 - `CLAUDE.md`
-- `GEMINI.md`
 - `LICENSE`
 - `README.md`
 - `README_VI.md`
