@@ -189,6 +189,30 @@ class CodeGraph:
             "exports": analysis.exports if analysis else []
         }
 
+    def get_god_nodes(self, top_k: int = 6) -> List[Dict[str, Any]]:
+        """Identify critical 'God Nodes' / architectural chokepoints with highest centrality."""
+        scored = []
+        for f in self.all_files:
+            in_deg = len(self.file_dependents.get(f, set()))
+            out_deg = len(self.file_dependencies.get(f, set()))
+            sym_count = len(self.file_symbols.get(f, []))
+
+            # Centrality score prioritizing inbound callers (blast radius)
+            score = (in_deg * 3.0) + out_deg + (sym_count * 0.1)
+            if in_deg > 0 or out_deg > 2:
+                role = "Foundational Core" if in_deg >= out_deg else "Central Orchestrator"
+                scored.append({
+                    "file": f,
+                    "in_degree": in_deg,
+                    "out_degree": out_deg,
+                    "symbols_count": sym_count,
+                    "score": round(score, 1),
+                    "role": role,
+                    "blast_radius": f"{in_deg} callers affected if modified"
+                })
+        scored.sort(key=lambda x: x["score"], reverse=True)
+        return scored[:top_k]
+
     def get_overview_stats(self) -> Dict[str, Any]:
         """Rank central files and entry points for the high-level architecture map."""
         # Central files = highest dependents (most imported by others)
@@ -213,7 +237,8 @@ class CodeGraph:
             "total_files": len(self.all_files),
             "total_symbols": sum(len(defs) for defs in self.symbol_index.values()),
             "entry_points": entry_points[:6],
-            "core_modules": core_modules
+            "core_modules": core_modules,
+            "god_nodes": self.get_god_nodes(top_k=6)
         }
 
     def to_dict(self) -> Dict[str, Any]:

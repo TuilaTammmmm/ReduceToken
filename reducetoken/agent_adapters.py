@@ -38,11 +38,13 @@ CLAUDE_INSTRUCTION = """# Claude Code - Token Saving Guidelines
 AGENTS_INSTRUCTION = """# Agent Guidelines (Antigravity & OpenCode)
 ## Token Optimization & Code Knowledge Graph (100% Autonomous)
 - **First Step**: Always consult `.codegraph/architecture_map.md` and `.codegraph/session_context.md` to understand module overview and past architectural decisions without wasting tokens.
-- **Targeted Lookup**: Run `rt query <keyword_or_symbol>` to get the exact subgraph (target file, dependencies, callers).
+- **Targeted Lookup & Fast Reading**:
+  * Run `rt query <keyword_or_symbol>` (or MCP `query_code_graph`) to get the exact subgraph (`TARGET FILE`, line numbers `[Lxx]`, dependencies, callers).
+  * **Line-Bound Reading**: Use `read_file(Path, StartLine, EndLine)` to read ONLY the target 20-50 lines around `[Lxx]`. NEVER read the entire file if you only need one function or class.
 - **Import Aliases & Monorepo**: When navigating virtual aliases (`@/*`, `~/*`, `workspace:*`), inspect `tsconfig.json` (`paths`) or `package.json` workspaces to resolve real paths instead of full-directory searches.
-- **Zero Full-Scan**: Never run commands that list or read all files across the repository.
+- **Zero Full-Scan**: Never run commands that list or read all files across the repository (`ls -R`, `find`, recursive glob).
 - **Autonomous Silent Maintenance (Zero User Effort)**:
-  * Do NOT spam `rt update` after every micro-edit. Run `rt update` once upon completing a task batch or logical feature.
+  * Do NOT spam `rt update` after every micro-edit. Delta sync runs automatically on next query or commit.
   * When you make an important technical decision or convention, automatically record it in `.codegraph/session_context.md`.
   * If `.codegraph/session_context.md` exceeds 50 lines (or ~500 tokens), automatically run `rt compact` to maintain token budget.
 - **Chat Token Minimization**:
@@ -134,9 +136,99 @@ class AgentAdapterManager:
 
 class GlobalAdapterManager:
     """Installs ReduceToken skills and rules globally across all major AI coding agents."""
+    ALIAS_MAP = {
+        "antigravity": "gemini",
+        "gemini": "gemini",
+        "cursor": "cursor",
+        "claude": "claude",
+        "claudecode": "claude",
+        "opencode": "opencode",
+        "agents": "agents",
+        "codex": "agents",
+        "universal": "agents",
+    }
+
     def __init__(self, home_dir: Optional[Path] = None):
         self.home = Path(home_dir) if home_dir else Path.home()
         self.pkg_root = Path(__file__).resolve().parent.parent
+        self.config_dir = self.home / ".reducetoken"
+        self.config_file = self.config_dir / "config.json"
+
+    def normalize_name(self, name: str) -> str:
+        cleaned = name.lower().strip()
+        return self.ALIAS_MAP.get(cleaned, cleaned)
+
+    def get_config(self) -> Dict:
+        if self.config_file.is_file():
+            try:
+                return json.loads(self.config_file.read_text(encoding="utf-8"))
+            except Exception:
+                pass
+        return {"enabled_adapters": {"gemini": True, "cursor": True, "claude": True, "opencode": True, "agents": True}}
+
+    def save_config(self, cfg: Dict):
+        self.config_dir.mkdir(parents=True, exist_ok=True)
+        self.config_file.write_text(json.dumps(cfg, indent=2, ensure_ascii=False), encoding="utf-8")
+
+    def is_adapter_enabled(self, key: str) -> bool:
+        canonical = self.normalize_name(key)
+        cfg = self.get_config()
+        enabled = cfg.get("enabled_adapters", {})
+        return enabled.get(canonical, True)
+
+    def set_adapter_status(self, key: str, enabled: bool):
+        canonical = self.normalize_name(key)
+        cfg = self.get_config()
+        if "enabled_adapters" not in cfg:
+            cfg["enabled_adapters"] = {}
+        cfg["enabled_adapters"][canonical] = enabled
+        self.save_config(cfg)
+
+    def uninstall_adapter(self, key: str) -> str:
+        import shutil
+        canonical = self.normalize_name(key)
+        self.set_adapter_status(canonical, False)
+        if canonical == "gemini":
+            target = self.home / ".gemini" / "config" / "plugins" / "reduce-token"
+            if target.is_dir():
+                shutil.rmtree(target, ignore_errors=True)
+                return f"Removed {target}"
+        elif canonical == "cursor":
+            mcp_file = self.home / ".cursor" / "mcp.json"
+            if mcp_file.is_file():
+                try:
+                    data = json.loads(mcp_file.read_text(encoding="utf-8"))
+                    if "mcpServers" in data and "reducetoken" in data["mcpServers"]:
+                        del data["mcpServers"]["reducetoken"]
+                        mcp_file.write_text(json.dumps(data, indent=2), encoding="utf-8")
+                        return f"Removed reducetoken entry from {mcp_file}"
+                except Exception:
+                    pass
+        elif canonical == "claude":
+            target = self.home / ".claude" / "skills" / "reduce-token"
+            if target.is_dir():
+                shutil.rmtree(target, ignore_errors=True)
+                return f"Removed {target}"
+        elif canonical == "opencode":
+            target = self.home / ".config" / "opencode" / "skills" / "reduce-token"
+            if target.is_dir():
+                shutil.rmtree(target, ignore_errors=True)
+            conf_file = self.home / ".config" / "opencode" / "opencode.json"
+            if conf_file.is_file():
+                try:
+                    data = json.loads(conf_file.read_text(encoding="utf-8"))
+                    if "mcp" in data and "reducetoken" in data["mcp"]:
+                        del data["mcp"]["reducetoken"]
+                        conf_file.write_text(json.dumps(data, indent=2), encoding="utf-8")
+                except Exception:
+                    pass
+            return "Removed OpenCode skills and MCP configuration"
+        elif canonical == "agents":
+            target = self.home / ".agents" / "skills" / "reduce-token"
+            if target.is_dir():
+                shutil.rmtree(target, ignore_errors=True)
+                return f"Removed {target}"
+        return f"Disabled {canonical}"
 
     def get_plugin_dir(self) -> Path:
         for cand in (
@@ -159,30 +251,36 @@ class GlobalAdapterManager:
 
     def detect_environments(self) -> Dict[str, Dict]:
         """Detects which AI tools/environments are installed or present on this machine."""
+        cfg = self.get_config().get("enabled_adapters", {})
         return {
             "gemini": {
                 "name": "Google Antigravity & Gemini CLI",
                 "detected": (self.home / ".gemini").is_dir(),
+                "enabled": cfg.get("gemini", True),
                 "path": str(self.home / ".gemini" / "config" / "plugins" / "reduce-token"),
             },
             "cursor": {
                 "name": "Cursor IDE (Global MCP)",
                 "detected": (self.home / ".cursor").is_dir() or (self.home / ".cursorrules").is_file(),
+                "enabled": cfg.get("cursor", True),
                 "path": str(self.home / ".cursor" / "mcp.json"),
             },
             "claude": {
                 "name": "Claude Code",
                 "detected": (self.home / ".claude").is_dir(),
+                "enabled": cfg.get("claude", True),
                 "path": str(self.home / ".claude" / "skills" / "reduce-token"),
             },
             "opencode": {
                 "name": "OpenCode",
                 "detected": (self.home / ".config" / "opencode").is_dir(),
+                "enabled": cfg.get("opencode", True),
                 "path": str(self.home / ".config" / "opencode" / "skills" / "reduce-token"),
             },
             "agents": {
                 "name": "Agent Skills Standard (Codex / Universal)",
                 "detected": (self.home / ".agents").is_dir() or (self.home / ".codex").is_dir(),
+                "enabled": cfg.get("agents", True),
                 "path": str(self.home / ".agents" / "skills" / "reduce-token"),
             },
         }
@@ -275,31 +373,39 @@ class GlobalAdapterManager:
         (rules_dir / "token-saver.md").write_text(AGENTS_INSTRUCTION, encoding="utf-8")
         return str(skill_dir)
 
-    def setup_all_global(self) -> Dict[str, str]:
+    def setup_all_global(
+        self,
+        only: Optional[List[str]] = None,
+        skip: Optional[List[str]] = None,
+        respect_config: bool = True
+    ) -> Dict[str, str]:
         results = {}
-        try:
-            results["Google Antigravity"] = self.setup_gemini()
-        except Exception as e:
-            results["Google Antigravity"] = f"Failed: {e}"
+        only_set = {self.normalize_name(x) for x in only} if only else None
+        skip_set = {self.normalize_name(x) for x in skip} if skip else set()
 
-        try:
-            results["Agent Skills Standard (Codex)"] = self.setup_agents_standard()
-        except Exception as e:
-            results["Agent Skills Standard"] = f"Failed: {e}"
+        adapters = [
+            ("gemini", "Google Antigravity", self.setup_gemini),
+            ("agents", "Agent Skills Standard (Codex)", self.setup_agents_standard),
+            ("claude", "Claude Code", self.setup_claude),
+            ("opencode", "OpenCode", self.setup_opencode),
+            ("cursor", "Cursor IDE (Global MCP)", self.setup_cursor),
+        ]
 
-        try:
-            results["Claude Code"] = self.setup_claude()
-        except Exception as e:
-            results["Claude Code"] = f"Failed: {e}"
+        for key, display_name, setup_fn in adapters:
+            if key in skip_set:
+                results[display_name] = "Skipped (--skip flag)"
+                continue
+            if only_set is not None and key not in only_set:
+                results[display_name] = "Skipped (not in --only list)"
+                continue
+            if respect_config and not self.is_adapter_enabled(key):
+                results[display_name] = "Skipped (disabled in config: ~/.reducetoken/config.json)"
+                continue
 
-        try:
-            results["OpenCode"] = self.setup_opencode()
-        except Exception as e:
-            results["OpenCode"] = f"Failed: {e}"
-
-        try:
-            results["Cursor IDE (Global MCP)"] = self.setup_cursor()
-        except Exception as e:
-            results["Cursor IDE"] = f"Failed: {e}"
+            try:
+                path = setup_fn()
+                results[display_name] = path
+            except Exception as e:
+                results[display_name] = f"Failed: {e}"
 
         return results

@@ -163,6 +163,40 @@ RECOMMENDED ACTION: Read only 'src/auth/jwt.py'. Do NOT read entire directory.
 ==============================================
 ```
 
+### 📖 Hướng dẫn AI đọc mã nhanh & Tiết kiệm 95% Token (Line-Bound Reading)
+Để AI Coding Agent không đọc tràn lan và tiết kiệm token tối đa, hãy chỉ thị cho AI tuân thủ quy trình:
+1. **Tra cứu tọa độ**: Chạy `rt query <tên_hàm_hoặc_symbol>` (hoặc MCP `query_code_graph`).
+2. **Xác định phạm vi dòng**: Kết quả trả về file đích và số dòng, ví dụ: `TARGET FILE: src/auth.py` và `[L42]`.
+3. **Đọc đúng giới hạn dòng**: Dùng công cụ `read_file(Path='src/auth.py', StartLine=35, EndLine=65)`.
+   * **TUYỆT ĐỐI KHÔNG** tải toàn bộ file 500-1000 dòng vào ngữ cảnh nếu chỉ cần xem/sửa 1 hàm.
+   * Nếu cần xem các file liên đới, chỉ đọc đúng các file xuất hiện trong mục `IMPORTS` hoặc `IMPORTED BY`.
+
+---
+
+## 🌐 Đồ thị Web Graph tương tác độc lập (`rt web`)
+
+ReduceToken tích hợp sẵn bộ trực quan hóa **HTML5 Canvas Force-Directed Graph 100% tự thân, không cần mạng internet**:
+* **Không phụ thuộc CDN bên ngoài**: Chạy offline 100%, không lo lỗi mạng hay bị chặn tải thư viện.
+* **Vật lý chống va chạm (Anti-Collision)**: Các node tự động giữ khoảng cách an toàn, không bao giờ bị đè lấn hoặc chồng chéo chữ lên nhau.
+* **Bộ lọc ẩn file cô lập (Hide Isolated Files)**: Tích chọn 1 chạm để ẩn toàn bộ các file tài liệu, license, cấu hình không có liên kết, chỉ tập trung vào mạng lưới code thực sự.
+* **Bộ lọc phân loại & kết nối**: Lọc nhanh File Code, File Tests, File Docs, hoặc chỉ hiện các **★ God Nodes** (nút chốt kiến trúc quan trọng nhất).
+* **Thanh trượt giãn khoảng cách (Spacing Slider)**: Kéo giãn hoặc thu gọn khoảng cách giữa các node theo ý muốn.
+* **Thanh Drawer chi tiết**: Click vào bất kỳ node nào để xem danh sách toàn bộ callers, dependencies và symbols có kèm số dòng `[Lxx]` với tính năng bấm để nhảy đến node liên quan.
+
+Mở trực tiếp trên trình duyệt bằng lệnh:
+```bash
+rt web    # hoặc: rt html
+```
+
+---
+
+## 🔬 Cơ chế hoạt động ngầm của ReduceToken
+
+1. **Phân tích AST & Bóc tách tĩnh**: Sử dụng thư viện chuẩn `ast.parse` của Python và bộ tokenizer regex tối ưu cho JS/TS, Go, Rust, Java, C/C++. Bóc tách chính xác hàm, class, decorator, số dòng định nghĩa và câu lệnh import mà không tốn một token LLM nào.
+2. **Giải quyết Path Alias & Monorepo**: Tự động đọc `tsconfig.json` (`paths`) và monorepo `package.json` workspaces để ánh xạ các alias ảo (`@/*`, `~/*`, `workspace:*`) về đúng file vật lý trên ổ đĩa.
+3. **Đồ thị quan hệ 2 chiều & God Nodes**: Xây dựng đồ thị có hướng (`file_dependencies` và `file_dependents`) và tính điểm trung tâm **Degree Centrality** để nhận diện các **God Nodes** (những file cốt lõi có bán kính ảnh hưởng lớn nhất nếu bị sửa đổi).
+4. **Bộ đệm Delta siêu tốc (<50ms)**: Băm mã SHA-256 từng file và theo dõi Git `HEAD`. Chỉ phân tích lại các file vừa thay đổi, tải tức thì các file còn lại từ `.codegraph/cache.json`.
+
 ---
 
 ## 📊 Kinh tế Token: Trước và Sau khi dùng ReduceToken
@@ -233,19 +267,26 @@ ReduceToken/
 
 Bạn có thể sử dụng alias ngắn **`rt`** (hoặc `reducetoken`) ở bất kỳ đâu trong terminal:
 
-| Câu lệnh (`rt` hoặc `reducetoken`) | Ý nghĩa / Hành động |
-|---|---|
-| `rt init [--clean] [--force]` | Quét dự án, xây dựng `.codegraph/` (tự động nhận diện cấu hình toàn cục, không làm bẩn root) |
-| `rt upgrade` | **Tự nâng cấp** phiên bản mới nhất từ Git và đồng bộ toàn bộ AI agent |
-| `rt query <symbol_hoặc_file>` | Tra cứu vị trí chính xác của symbol, số dòng và quan hệ phụ thuộc |
-| `rt update` | Đồng bộ lại các file vừa chỉnh sửa (<100ms) |
-| `rt overview` | In nhanh bản đồ kiến trúc toàn dự án |
-| `rt memory add "<Chủ đề>" "<Nội dung>"` | Ghi nhớ một quyết định kiến trúc vào `session_context.md` |
-| `rt memory conv "<Quy ước>"` | Ghi nhớ một quy ước lập trình cho các phiên chat sau |
-| `rt compact` | Tóm tắt và nén lại bộ nhớ phiên làm việc |
-| `rt install [--global]` | Cài đặt plugin toàn cục cho các AI Agent trên máy |
-| `rt mcp` | Chạy dưới dạng Native Model Context Protocol (MCP) server |
-| `rt git-hook` | Cài đặt Git hook `post-commit` để tự động đồng bộ đồ thị sau mỗi commit |
+| Câu lệnh (`rt` hoặc `reducetoken`) | Hành động | Giải thích chi tiết |
+|---|---|---|
+| `rt` / `rt ui` | **Giao diện dòng lệnh tương tác (TUI Dashboard)** | Điều hướng phím mũi tên kiểu OpenCode (`↑/↓` + `Enter`), phím tắt số `1-8` |
+| `rt help [câu_lệnh]` | **Hướng dẫn & tra cứu lệnh CLI** | Hiển thị bảng tra cứu toàn diện hoặc hướng dẫn chi tiết từng lệnh |
+| `rt web` / `rt html` | **Mở Web Graph tương tác trên trình duyệt** | Canvas HTML5 tự thân, nhóm thư mục, chống đè node, bộ lọc cô lập |
+| `rt query <symbol>` | **Truy vấn Subgraph DSL** | Định vị chính xác file, số dòng `[Lxx]` và liên kết 1-hop (~60 tokens) |
+| `rt graph <symbol>` | **Vẽ đồ thị ASCII Box trên terminal** | Vẽ sơ đồ khối hộp 2 chiều Callers và Dependencies trực tiếp trong terminal |
+| `rt tree [thư_mục]` | **Vẽ cây quan hệ phụ thuộc (Tree View)** | Cây thư mục biểu diễn symbol định nghĩa, chiều import và chiều được gọi |
+| `rt update` | **Đồng bộ gia tăng (<50ms)** | Quét nhanh delta cache; chỉ phân tích lại các file vừa thay đổi từ lần quét trước |
+| `rt init [--clean]` | **Khởi tạo đồ thị trong dự án** | Quét dự án, tạo thư mục `.codegraph/` và sinh các file quy tắc cho AI |
+| `rt init --force` | **Xây dựng lại toàn bộ (Full Rebuild)** | Xóa sạch cache và quét lại toàn bộ 100% dự án từ đầu |
+| `rt doctor` | **Kiểm tra sức khỏe hệ thống** | Kiểm tra tính toàn vẹn cache, trạng thái Git hook, và các plugin AI trên máy |
+| `rt memory add "<Chủ đề>" "<Nội dung>"` | **Ghi nhận quyết định kiến trúc** | Lưu quyết định kỹ thuật lâu dài vào `session_context.md` |
+| `rt memory conv "<Quy ước>"` | **Thêm quy ước lập trình** | Lưu quy ước code cho các phiên chat AI sau |
+| `rt compact` | **Nén bộ nhớ phiên làm việc** | Tóm tắt bộ nhớ để phiên chat mới luôn dưới 150 tokens |
+| `rt adapters [lệnh_con]` | **Quản lý tích hợp AI Agent** | `list`, `enable <tên>`, `disable <tên>`, `remove <tên>`, `sync` |
+| `rt upgrade [--cờ]` | **Nâng cấp ReduceToken từ Git** | Cập nhật bản mới nhất và đồng bộ có chọn lọc (`--only`, `--skip`, `--no-agents`) |
+| `rt install --global` | **Cài đặt plugin đa AI** | Tự động cấu hình cho Antigravity, Cursor, Claude, OpenCode |
+| `rt mcp` | **Khởi chạy MCP Server** | Chạy server Model Context Protocol chuẩn qua stdio |
+| `rt git-hook` | **Cài đặt Git Hook tự động** | Cài Git `post-commit` hook để tự động đồng bộ đồ thị sau mỗi commit |
 
 > **💡 Gợi ý**: Cả hai alias `rt` và `reducetoken` đều được đăng ký tự động trên toàn hệ thống.  
 > **Cách chạy dự phòng không cần alias**: `python -m reducetoken.cli <câu_lệnh>`.

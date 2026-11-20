@@ -21,6 +21,11 @@ class Generator:
         self.write_architecture_map()
         self.write_graph_json()
         self.write_symbols_json()
+        try:
+            from reducetoken.web_visualizer import generate_web_graph_html
+            generate_web_graph_html(self.graph, self.output_dir / "graph.html")
+        except Exception:
+            pass
 
     @staticmethod
     def _get_top_symbols(analysis) -> List[str]:
@@ -64,11 +69,18 @@ class Generator:
         if stats["entry_points"]:
             lines.append(f"- **Entry Points**: {', '.join(stats['entry_points'])}")
 
-        if stats["core_modules"]:
-            core_str = ", ".join([f"`{m['file']}` ({m['dependent_count']} refs)" for m in stats["core_modules"]])
-            lines.append(f"- **Core Modules**: {core_str}")
+        god_nodes = stats.get("god_nodes", [])
+        if god_nodes:
+            lines.append("\n## 2. Critical God Nodes & Architectural Chokepoints")
+            lines.append("> **Blast-Radius Alert**: Modifying these central nodes affects many downstream modules.\n")
+            for node in god_nodes:
+                f_name = node["file"]
+                role = node["role"]
+                in_d = node["in_degree"]
+                out_d = node["out_degree"]
+                lines.append(f"- `{f_name}` — **{role}** (In: {in_d} callers, Out: {out_d} deps)")
 
-        lines.append("\n## 2. Module Directory Structure")
+        lines.append("\n## 3. Module Directory Structure")
         for top_dir, files in sorted(dir_clusters.items()):
             # Sort files: code files first, meta/rule files last
             def file_sort_key(file_path: str):
@@ -79,8 +91,8 @@ class Generator:
             sorted_files = sorted(files, key=file_sort_key)
             lines.append(f"### `{top_dir}` ({len(files)} files)")
 
-            # List up to 10 files per cluster
-            for f in sorted_files[:10]:
+            # List all files per cluster without omission
+            for f in sorted_files:
                 analysis = self.graph.analyses.get(f)
                 symbols_summary = ""
                 top_syms = self._get_top_symbols(analysis)
@@ -90,13 +102,14 @@ class Generator:
                     symbols_summary = f" — {analysis.summary[:60]}"
                 lines.append(f"- `{f}`{symbols_summary}")
 
-            if len(files) > 10:
-                lines.append(f"- *(+{len(files) - 10} more files)*")
-
-        lines.append("\n## 3. How to Query")
-        lines.append("- Find where a symbol/function is: `rt query <symbol_name>` (or `reducetoken query`)")
-        lines.append("- Find callers/dependencies of a file: `rt query <file_path>`")
-        lines.append("- Force refresh graph if needed: `rt update`")
+        lines.append("\n## 4. How AI Agents Query & Fast Read (Token Saving Guide)")
+        lines.append("To avoid reading full multi-hundred line files and save up to 95% tokens:")
+        lines.append("1. **Locate Target**: Run `rt query <symbol_or_keyword>` (or MCP `query_code_graph`).")
+        lines.append("   - Returns `TARGET FILE: path/to/file.py` and exact line numbers (e.g. `[L42]`).")
+        lines.append("2. **Targeted Line Read**: Call `read_file(Path='path/to/file.py', StartLine=35, EndLine=70)` to read only the target function.")
+        lines.append("   - **NEVER** read the entire file if you only need one class or method.")
+        lines.append("3. **Inspect Callers & Deps**: Inspect only the 1-hop files listed in `IMPORTS` or `IMPORTED BY`.")
+        lines.append("4. **Open Visual Web Graph**: Run `rt web` to explore the complete dependency network in browser.")
 
         content = "\n".join(lines) + "\n"
         with open(out_file, "w", encoding="utf-8") as f:

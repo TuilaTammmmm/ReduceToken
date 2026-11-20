@@ -1,14 +1,39 @@
 {
   "decisions": [
     {
-      "topic": "Architecture",
-      "content": "Used Directed Graph for dependency tracking",
-      "date": "2026-11-16"
+      "topic": "Terminal UI & Visual Graph",
+      "content": "Added interactive Terminal UI (tui.py), ASCII/Unicode dependency graph visualizer, dependency tree, and system doctor.",
+      "date": "2026-11-20"
+    },
+    {
+      "topic": "Interactive TUI & Web Graph (Graphify parity)",
+      "content": "Implemented OpenCode-style interactive arrow-key TUI, eliminated Vietnamese strings from developer UI, added standalone interactive web graph (rt web), and God Nodes / chokepoint centrality analysis.",
+      "date": "2026-11-20"
+    },
+    {
+      "topic": "Zero-CDN Standalone Web Graph & Zero-Truncation",
+      "content": "Replaced external CDN with self-contained HTML5 Canvas Force-Directed engine in graph.html, eliminated terminal screen flickering via ANSI in-place buffer, removed all symbol and file truncations in architecture_map and TUI, and added line-bound reading rules for AI.",
+      "date": "2026-11-20"
+    },
+    {
+      "topic": "Web Graph Layout Optimization & Independent Sync Action",
+      "content": "Enhanced web visualizer with hard circle collision avoidance, adjustable spacing slider, hide-isolated toggle, and type/connection filters. Split Update (incremental) and Rebuild (clean cache) into distinct menu items, and updated README documentation.",
+      "date": "2026-11-20"
+    },
+    {
+      "topic": "Direct Chrome Launch",
+      "content": "Enhanced launch_browser to directly locate and spawn Google Chrome executable on Windows, macOS, and Linux before falling back to default shell association.",
+      "date": "2026-11-20"
+    },
+    {
+      "topic": "Fix print_header & Web Launch",
+      "content": "Restored print_header method in TerminalUI to fix AttributeError on option 1. Updated launch_browser with Windows shell start chrome and explicit URL printout in _handle_web.",
+      "date": "2026-11-20"
     }
   ],
   "touched_files": [],
   "conventions": [
     "All internal functions must have type hints"
   ],
-  "last_updated": "2026-11-16 18:58:21"
+  "last_updated": "2026-11-20 18:04:38"
 }

@@ -4,7 +4,7 @@
       "name": "AgentAdapterManager",
       "kind": "class",
       "file": "reducetoken/agent_adapters.py",
-      "line": 55,
+      "line": 57,
       "doc": "",
       "args": [],
       "methods": [
@@ -24,7 +24,7 @@
       "name": "__init__",
       "kind": "function",
       "file": "reducetoken/agent_adapters.py",
-      "line": 56,
+      "line": 58,
       "doc": "",
       "args": [
         "root_dir"
@@ -35,7 +35,7 @@
       "name": "__init__",
       "kind": "function",
       "file": "reducetoken/agent_adapters.py",
-      "line": 137,
+      "line": 151,
       "doc": "",
       "args": [
         "home_dir"
@@ -113,6 +113,26 @@
     {
       "name": "__init__",
       "kind": "function",
+      "file": "reducetoken/tui.py",
+      "line": 16,
+      "doc": "",
+      "args": [],
+      "methods": []
+    },
+    {
+      "name": "__init__",
+      "kind": "function",
+      "file": "reducetoken/tui.py",
+      "line": 337,
+      "doc": "",
+      "args": [
+        "root_dir"
+      ],
+      "methods": []
+    },
+    {
+      "name": "__init__",
+      "kind": "function",
       "file": "reducetoken/parsers/python_parser.py",
       "line": 7,
       "doc": "",
@@ -127,7 +147,7 @@
       "name": "is_global_active",
       "kind": "function",
       "file": "reducetoken/agent_adapters.py",
-      "line": 59,
+      "line": 61,
       "doc": "Check if ReduceToken plugin is already installed globally.",
       "args": [],
       "methods": []
@@ -138,7 +158,7 @@
       "name": "setup_copilot",
       "kind": "function",
       "file": "reducetoken/agent_adapters.py",
-      "line": 69,
+      "line": 71,
       "doc": "",
       "args": [],
       "methods": []
@@ -149,7 +169,7 @@
       "name": "setup_cursor",
       "kind": "function",
       "file": "reducetoken/agent_adapters.py",
-      "line": 75,
+      "line": 77,
       "doc": "",
       "args": [
         "modern"
@@ -160,7 +180,7 @@
       "name": "setup_cursor",
       "kind": "function",
       "file": "reducetoken/agent_adapters.py",
-      "line": 219,
+      "line": 317,
       "doc": "",
       "args": [],
       "methods": []
@@ -171,7 +191,7 @@
       "name": "setup_claude",
       "kind": "function",
       "file": "reducetoken/agent_adapters.py",
-      "line": 87,
+      "line": 89,
       "doc": "",
       "args": [],
       "methods": []
@@ -180,7 +200,7 @@
       "name": "setup_claude",
       "kind": "function",
       "file": "reducetoken/agent_adapters.py",
-      "line": 238,
+      "line": 336,
       "doc": "",
       "args": [],
       "methods": []
@@ -191,7 +211,7 @@
       "name": "setup_agents",
       "kind": "function",
       "file": "reducetoken/agent_adapters.py",
-      "line": 92,
+      "line": 94,
       "doc": "",
       "args": [
         "hidden_only"
@@ -204,7 +224,7 @@
       "name": "setup_all",
       "kind": "function",
       "file": "reducetoken/agent_adapters.py",
-      "line": 107,
+      "line": 109,
       "doc": "",
       "args": [
         "modern",
@@ -218,7 +238,7 @@
       "name": "setup_by_agent",
       "kind": "function",
       "file": "reducetoken/agent_adapters.py",
-      "line": 116,
+      "line": 118,
       "doc": "Set up instructions for specific agent or all.",
       "args": [
         "agent",
@@ -232,11 +252,17 @@
       "name": "GlobalAdapterManager",
       "kind": "class",
       "file": "reducetoken/agent_adapters.py",
-      "line": 135,
+      "line": 137,
       "doc": "Installs ReduceToken skills and rules globally across all major AI coding agents.",
       "args": [],
       "methods": [
         "__init__",
+        "normalize_name",
+        "get_config",
+        "save_config",
+        "is_adapter_enabled",
+        "set_adapter_status",
+        "uninstall_adapter",
         "get_plugin_dir",
         "get_skill_content",
         "detect_environments",
@@ -250,12 +276,89 @@
       ]
     }
   ],
+  "normalize_name": [
+    {
+      "name": "normalize_name",
+      "kind": "function",
+      "file": "reducetoken/agent_adapters.py",
+      "line": 157,
+      "doc": "",
+      "args": [
+        "name"
+      ],
+      "methods": []
+    }
+  ],
+  "get_config": [
+    {
+      "name": "get_config",
+      "kind": "function",
+      "file": "reducetoken/agent_adapters.py",
+      "line": 161,
+      "doc": "",
+      "args": [],
+      "methods": []
+    }
+  ],
+  "save_config": [
+    {
+      "name": "save_config",
+      "kind": "function",
+      "file": "reducetoken/agent_adapters.py",
+      "line": 169,
+      "doc": "",
+      "args": [
+        "cfg"
+      ],
+      "methods": []
+    }
+  ],
+  "is_adapter_enabled": [
+    {
+      "name": "is_adapter_enabled",
+      "kind": "function",
+      "file": "reducetoken/agent_adapters.py",
+      "line": 173,
+      "doc": "",
+      "args": [
+        "key"
+      ],
+      "methods": []
+    }
+  ],
+  "set_adapter_status": [
+    {
+      "name": "set_adapter_status",
+      "kind": "function",
+      "file": "reducetoken/agent_adapters.py",
+      "line": 179,
+      "doc": "",
+      "args": [
+        "key",
+        "enabled"
+      ],
+      "methods": []
+    }
+  ],
+  "uninstall_adapter": [
+    {
+      "name": "uninstall_adapter",
+      "kind": "function",
+      "file": "reducetoken/agent_adapters.py",
+      "line": 187,
+      "doc": "",
+      "args": [
+        "key"
+      ],
+      "methods": []
+    }
+  ],
   "get_plugin_dir": [
     {
       "name": "get_plugin_dir",
       "kind": "function",
       "file": "reducetoken/agent_adapters.py",
-      "line": 141,
+      "line": 233,
       "doc": "",
       "args": [],
       "methods": []
@@ -266,7 +369,7 @@
       "name": "get_skill_content",
       "kind": "function",
       "file": "reducetoken/agent_adapters.py",
-      "line": 150,
+      "line": 242,
       "doc": "",
       "args": [],
       "methods": []
@@ -277,7 +380,7 @@
       "name": "detect_environments",
       "kind": "function",
       "file": "reducetoken/agent_adapters.py",
-      "line": 160,
+      "line": 252,
       "doc": "Detects which AI tools/environments are installed or present on this machine.",
       "args": [],
       "methods": []
@@ -288,7 +391,7 @@
       "name": "copy_skill_bundle",
       "kind": "function",
       "file": "reducetoken/agent_adapters.py",
-      "line": 190,
+      "line": 288,
       "doc": "Copies SKILL.md and references/ directory to the destination.",
       "args": [
         "dest_skill_dir"
@@ -301,7 +404,7 @@
       "name": "setup_gemini",
       "kind": "function",
       "file": "reducetoken/agent_adapters.py",
-      "line": 203,
+      "line": 301,
       "doc": "",
       "args": [],
       "methods": []
@@ -312,7 +415,7 @@
       "name": "setup_opencode",
       "kind": "function",
       "file": "reducetoken/agent_adapters.py",
-      "line": 247,
+      "line": 345,
       "doc": "",
       "args": [],
       "methods": []
@@ -323,7 +426,7 @@
       "name": "setup_agents_standard",
       "kind": "function",
       "file": "reducetoken/agent_adapters.py",
-      "line": 269,
+      "line": 367,
       "doc": "",
       "args": [],
       "methods": []
@@ -334,9 +437,13 @@
       "name": "setup_all_global",
       "kind": "function",
       "file": "reducetoken/agent_adapters.py",
-      "line": 278,
+      "line": 376,
       "doc": "",
-      "args": [],
+      "args": [
+        "only",
+        "skip",
+        "respect_config"
+      ],
       "methods": []
     }
   ],
@@ -554,7 +661,7 @@
       "name": "cmd_init",
       "kind": "function",
       "file": "reducetoken/cli.py",
-      "line": 97,
+      "line": 98,
       "doc": "",
       "args": [
         "args"
@@ -567,7 +674,7 @@
       "name": "cmd_update",
       "kind": "function",
       "file": "reducetoken/cli.py",
-      "line": 145,
+      "line": 146,
       "doc": "",
       "args": [
         "args"
@@ -580,7 +687,59 @@
       "name": "cmd_query",
       "kind": "function",
       "file": "reducetoken/cli.py",
-      "line": 150,
+      "line": 151,
+      "doc": "",
+      "args": [
+        "args"
+      ],
+      "methods": []
+    }
+  ],
+  "cmd_ui": [
+    {
+      "name": "cmd_ui",
+      "kind": "function",
+      "file": "reducetoken/cli.py",
+      "line": 164,
+      "doc": "",
+      "args": [
+        "args"
+      ],
+      "methods": []
+    }
+  ],
+  "cmd_tree": [
+    {
+      "name": "cmd_tree",
+      "kind": "function",
+      "file": "reducetoken/cli.py",
+      "line": 170,
+      "doc": "",
+      "args": [
+        "args"
+      ],
+      "methods": []
+    }
+  ],
+  "cmd_doctor": [
+    {
+      "name": "cmd_doctor",
+      "kind": "function",
+      "file": "reducetoken/cli.py",
+      "line": 178,
+      "doc": "",
+      "args": [
+        "args"
+      ],
+      "methods": []
+    }
+  ],
+  "cmd_web": [
+    {
+      "name": "cmd_web",
+      "kind": "function",
+      "file": "reducetoken/cli.py",
+      "line": 185,
       "doc": "",
       "args": [
         "args"
@@ -593,7 +752,7 @@
       "name": "cmd_overview",
       "kind": "function",
       "file": "reducetoken/cli.py",
-      "line": 159,
+      "line": 192,
       "doc": "",
       "args": [
         "args"
@@ -606,7 +765,7 @@
       "name": "cmd_compact",
       "kind": "function",
       "file": "reducetoken/cli.py",
-      "line": 168,
+      "line": 201,
       "doc": "",
       "args": [
         "args"
@@ -619,7 +778,7 @@
       "name": "cmd_memory",
       "kind": "function",
       "file": "reducetoken/cli.py",
-      "line": 176,
+      "line": 209,
       "doc": "",
       "args": [
         "args"
@@ -632,7 +791,7 @@
       "name": "cmd_git_hook",
       "kind": "function",
       "file": "reducetoken/cli.py",
-      "line": 191,
+      "line": 224,
       "doc": "",
       "args": [
         "args"
@@ -645,7 +804,33 @@
       "name": "cmd_install",
       "kind": "function",
       "file": "reducetoken/cli.py",
-      "line": 208,
+      "line": 242,
+      "doc": "",
+      "args": [
+        "args"
+      ],
+      "methods": []
+    }
+  ],
+  "cmd_help": [
+    {
+      "name": "cmd_help",
+      "kind": "function",
+      "file": "reducetoken/cli.py",
+      "line": 472,
+      "doc": "",
+      "args": [
+        "args"
+      ],
+      "methods": []
+    }
+  ],
+  "cmd_adapters": [
+    {
+      "name": "cmd_adapters",
+      "kind": "function",
+      "file": "reducetoken/cli.py",
+      "line": 484,
       "doc": "",
       "args": [
         "args"
@@ -658,7 +843,7 @@
       "name": "cmd_upgrade",
       "kind": "function",
       "file": "reducetoken/cli.py",
-      "line": 288,
+      "line": 543,
       "doc": "",
       "args": [
         "args"
@@ -671,7 +856,7 @@
       "name": "main",
       "kind": "function",
       "file": "reducetoken/cli.py",
-      "line": 305,
+      "line": 575,
       "doc": "",
       "args": [],
       "methods": []
@@ -681,6 +866,17 @@
       "kind": "function",
       "file": "reducetoken/mcp_server.py",
       "line": 204,
+      "doc": "",
+      "args": [],
+      "methods": []
+    }
+  ],
+  "fakehelpargs": [
+    {
+      "name": "FakeHelpArgs",
+      "kind": "class",
+      "file": "reducetoken/cli.py",
+      "line": 585,
       "doc": "",
       "args": [],
       "methods": []
@@ -721,7 +917,7 @@
       "name": "_get_top_symbols",
       "kind": "function",
       "file": "reducetoken/generator.py",
-      "line": 26,
+      "line": 31,
       "doc": "",
       "args": [
         "analysis"
@@ -734,7 +930,7 @@
       "name": "write_architecture_map",
       "kind": "function",
       "file": "reducetoken/generator.py",
-      "line": 42,
+      "line": 47,
       "doc": "",
       "args": [],
       "methods": []
@@ -745,7 +941,7 @@
       "name": "file_sort_key",
       "kind": "function",
       "file": "reducetoken/generator.py",
-      "line": 74,
+      "line": 86,
       "doc": "",
       "args": [
         "file_path"
@@ -758,7 +954,7 @@
       "name": "write_graph_json",
       "kind": "function",
       "file": "reducetoken/generator.py",
-      "line": 106,
+      "line": 119,
       "doc": "",
       "args": [],
       "methods": []
@@ -769,7 +965,7 @@
       "name": "write_symbols_json",
       "kind": "function",
       "file": "reducetoken/generator.py",
-      "line": 113,
+      "line": 126,
       "doc": "",
       "args": [],
       "methods": []
@@ -780,7 +976,7 @@
       "name": "format_agent_dsl",
       "kind": "function",
       "file": "reducetoken/generator.py",
-      "line": 120,
+      "line": 133,
       "doc": "Format subgraph query result as ultra-compact text (~50-80 tokens).",
       "args": [
         "query_result"
@@ -803,6 +999,7 @@
         "build",
         "_resolve_import",
         "query",
+        "get_god_nodes",
         "get_overview_stats",
         "to_dict"
       ]
@@ -872,12 +1069,25 @@
       "methods": []
     }
   ],
+  "get_god_nodes": [
+    {
+      "name": "get_god_nodes",
+      "kind": "function",
+      "file": "reducetoken/graph.py",
+      "line": 192,
+      "doc": "Identify critical 'God Nodes' / architectural chokepoints with highest centrality.",
+      "args": [
+        "top_k"
+      ],
+      "methods": []
+    }
+  ],
   "get_overview_stats": [
     {
       "name": "get_overview_stats",
       "kind": "function",
       "file": "reducetoken/graph.py",
-      "line": 192,
+      "line": 216,
       "doc": "Rank central files and entry points for the high-level architecture map.",
       "args": [],
       "methods": []
@@ -888,7 +1098,7 @@
       "name": "to_dict",
       "kind": "function",
       "file": "reducetoken/graph.py",
-      "line": 219,
+      "line": 244,
       "doc": "Serialize full graph.",
       "args": [],
       "methods": []
@@ -1147,6 +1357,322 @@
       "line": 161,
       "doc": "Scan workspace and return a list of file dicts:",
       "args": [],
+      "methods": []
+    }
+  ],
+  "colors": [
+    {
+      "name": "Colors",
+      "kind": "class",
+      "file": "reducetoken/tui.py",
+      "line": 14,
+      "doc": "ANSI styling for clean terminal rendering.",
+      "args": [],
+      "methods": [
+        "__init__"
+      ]
+    }
+  ],
+  "read_key": [
+    {
+      "name": "read_key",
+      "kind": "function",
+      "file": "reducetoken/tui.py",
+      "line": 39,
+      "doc": "Reads a single keypress or arrow key event.",
+      "args": [],
+      "methods": []
+    }
+  ],
+  "graphvisualizer": [
+    {
+      "name": "GraphVisualizer",
+      "kind": "class",
+      "file": "reducetoken/tui.py",
+      "line": 87,
+      "doc": "ASCII & Unicode Knowledge Graph & Dependency Tree Renderer.",
+      "args": [],
+      "methods": [
+        "draw_subgraph",
+        "draw_dependency_tree",
+        "draw_architecture_overview",
+        "draw_doctor"
+      ]
+    }
+  ],
+  "draw_subgraph": [
+    {
+      "name": "draw_subgraph",
+      "kind": "function",
+      "file": "reducetoken/tui.py",
+      "line": 91,
+      "doc": "",
+      "args": [
+        "query_res"
+      ],
+      "methods": []
+    }
+  ],
+  "draw_dependency_tree": [
+    {
+      "name": "draw_dependency_tree",
+      "kind": "function",
+      "file": "reducetoken/tui.py",
+      "line": 170,
+      "doc": "Render a hierarchical tree of files with their dependency connections.",
+      "args": [
+        "graph",
+        "filter_dir"
+      ],
+      "methods": []
+    }
+  ],
+  "draw_architecture_overview": [
+    {
+      "name": "draw_architecture_overview",
+      "kind": "function",
+      "file": "reducetoken/tui.py",
+      "line": 236,
+      "doc": "Render high-level architecture overview, God Nodes, and Centrality Network.",
+      "args": [
+        "graph"
+      ],
+      "methods": []
+    }
+  ],
+  "draw_doctor": [
+    {
+      "name": "draw_doctor",
+      "kind": "function",
+      "file": "reducetoken/tui.py",
+      "line": 274,
+      "doc": "Health-check project status, Git hook, AI integrations, and token savings.",
+      "args": [
+        "root_dir",
+        "graph"
+      ],
+      "methods": []
+    }
+  ],
+  "terminalui": [
+    {
+      "name": "TerminalUI",
+      "kind": "class",
+      "file": "reducetoken/tui.py",
+      "line": 322,
+      "doc": "Interactive OpenCode-style Terminal Dashboard for ReduceToken.",
+      "args": [],
+      "methods": [
+        "__init__",
+        "clear",
+        "print_header",
+        "build_dashboard_str",
+        "run",
+        "_dispatch_choice",
+        "_handle_sync",
+        "_handle_query",
+        "_handle_tree",
+        "_handle_web",
+        "_handle_architecture",
+        "_handle_memory",
+        "_handle_doctor",
+        "_handle_clean"
+      ]
+    }
+  ],
+  "clear": [
+    {
+      "name": "clear",
+      "kind": "function",
+      "file": "reducetoken/tui.py",
+      "line": 345,
+      "doc": "",
+      "args": [],
+      "methods": []
+    }
+  ],
+  "print_header": [
+    {
+      "name": "print_header",
+      "kind": "function",
+      "file": "reducetoken/tui.py",
+      "line": 348,
+      "doc": "",
+      "args": [],
+      "methods": []
+    }
+  ],
+  "build_dashboard_str": [
+    {
+      "name": "build_dashboard_str",
+      "kind": "function",
+      "file": "reducetoken/tui.py",
+      "line": 367,
+      "doc": "",
+      "args": [],
+      "methods": []
+    }
+  ],
+  "run": [
+    {
+      "name": "run",
+      "kind": "function",
+      "file": "reducetoken/tui.py",
+      "line": 404,
+      "doc": "",
+      "args": [],
+      "methods": []
+    }
+  ],
+  "_dispatch_choice": [
+    {
+      "name": "_dispatch_choice",
+      "kind": "function",
+      "file": "reducetoken/tui.py",
+      "line": 462,
+      "doc": "",
+      "args": [
+        "key"
+      ],
+      "methods": []
+    }
+  ],
+  "_handle_sync": [
+    {
+      "name": "_handle_sync",
+      "kind": "function",
+      "file": "reducetoken/tui.py",
+      "line": 480,
+      "doc": "",
+      "args": [],
+      "methods": []
+    }
+  ],
+  "_handle_query": [
+    {
+      "name": "_handle_query",
+      "kind": "function",
+      "file": "reducetoken/tui.py",
+      "line": 488,
+      "doc": "",
+      "args": [],
+      "methods": []
+    }
+  ],
+  "_handle_tree": [
+    {
+      "name": "_handle_tree",
+      "kind": "function",
+      "file": "reducetoken/tui.py",
+      "line": 507,
+      "doc": "",
+      "args": [],
+      "methods": []
+    }
+  ],
+  "_handle_web": [
+    {
+      "name": "_handle_web",
+      "kind": "function",
+      "file": "reducetoken/tui.py",
+      "line": 521,
+      "doc": "",
+      "args": [],
+      "methods": []
+    }
+  ],
+  "_handle_architecture": [
+    {
+      "name": "_handle_architecture",
+      "kind": "function",
+      "file": "reducetoken/tui.py",
+      "line": 533,
+      "doc": "",
+      "args": [],
+      "methods": []
+    }
+  ],
+  "_handle_memory": [
+    {
+      "name": "_handle_memory",
+      "kind": "function",
+      "file": "reducetoken/tui.py",
+      "line": 540,
+      "doc": "",
+      "args": [],
+      "methods": []
+    }
+  ],
+  "_handle_doctor": [
+    {
+      "name": "_handle_doctor",
+      "kind": "function",
+      "file": "reducetoken/tui.py",
+      "line": 580,
+      "doc": "",
+      "args": [],
+      "methods": []
+    }
+  ],
+  "_handle_clean": [
+    {
+      "name": "_handle_clean",
+      "kind": "function",
+      "file": "reducetoken/tui.py",
+      "line": 587,
+      "doc": "",
+      "args": [],
+      "methods": []
+    }
+  ],
+  "generate_web_graph_html": [
+    {
+      "name": "generate_web_graph_html",
+      "kind": "function",
+      "file": "reducetoken/web_visualizer.py",
+      "line": 41,
+      "doc": "Generate an advanced standalone, zero-CDN HTML5 Canvas Interactive Graph.",
+      "args": [
+        "graph",
+        "output_path"
+      ],
+      "methods": []
+    }
+  ],
+  "find_chrome_binary": [
+    {
+      "name": "find_chrome_binary",
+      "kind": "function",
+      "file": "reducetoken/web_visualizer.py",
+      "line": 1470,
+      "doc": "Find Google Chrome executable across platforms.",
+      "args": [],
+      "methods": []
+    }
+  ],
+  "launch_browser": [
+    {
+      "name": "launch_browser",
+      "kind": "function",
+      "file": "reducetoken/web_visualizer.py",
+      "line": 1494,
+      "doc": "Directly launch Google Chrome (or system default browser) and bring it to foreground.",
+      "args": [
+        "target_path"
+      ],
+      "methods": []
+    }
+  ],
+  "open_web_graph": [
+    {
+      "name": "open_web_graph",
+      "kind": "function",
+      "file": "reducetoken/web_visualizer.py",
+      "line": 1546,
+      "doc": "Regenerate latest Web Graph HTML and immediately open it in default browser.",
+      "args": [
+        "root_dir"
+      ],
       "methods": []
     }
   ],
@@ -1439,6 +1965,30 @@
       "methods": []
     }
   ],
+  "testclicommands": [
+    {
+      "name": "TestCliCommands",
+      "kind": "class",
+      "file": "tests/test_cli.py",
+      "line": 12,
+      "doc": "",
+      "args": [],
+      "methods": [
+        "test_cli_query_and_graph"
+      ]
+    }
+  ],
+  "test_cli_query_and_graph": [
+    {
+      "name": "test_cli_query_and_graph",
+      "kind": "function",
+      "file": "tests/test_cli.py",
+      "line": 13,
+      "doc": "",
+      "args": [],
+      "methods": []
+    }
+  ],
   "testgraphandcache": [
     {
       "name": "TestGraphAndCache",
@@ -1566,6 +2116,90 @@
       "kind": "function",
       "file": "tests/test_parsers.py",
       "line": 93,
+      "doc": "",
+      "args": [],
+      "methods": []
+    }
+  ],
+  "testtuiandvisualizer": [
+    {
+      "name": "TestTuiAndVisualizer",
+      "kind": "class",
+      "file": "tests/test_tui.py",
+      "line": 10,
+      "doc": "",
+      "args": [],
+      "methods": [
+        "test_draw_subgraph",
+        "test_draw_dependency_tree",
+        "test_draw_architecture_and_doctor"
+      ]
+    }
+  ],
+  "test_draw_subgraph": [
+    {
+      "name": "test_draw_subgraph",
+      "kind": "function",
+      "file": "tests/test_tui.py",
+      "line": 11,
+      "doc": "",
+      "args": [],
+      "methods": []
+    }
+  ],
+  "test_draw_dependency_tree": [
+    {
+      "name": "test_draw_dependency_tree",
+      "kind": "function",
+      "file": "tests/test_tui.py",
+      "line": 33,
+      "doc": "",
+      "args": [],
+      "methods": []
+    }
+  ],
+  "test_draw_architecture_and_doctor": [
+    {
+      "name": "test_draw_architecture_and_doctor",
+      "kind": "function",
+      "file": "tests/test_tui.py",
+      "line": 54,
+      "doc": "",
+      "args": [],
+      "methods": []
+    }
+  ],
+  "testwebvisualizerandgodnodes": [
+    {
+      "name": "TestWebVisualizerAndGodNodes",
+      "kind": "class",
+      "file": "tests/test_web_visualizer.py",
+      "line": 10,
+      "doc": "",
+      "args": [],
+      "methods": [
+        "test_god_nodes_calculation",
+        "test_generate_web_graph_html"
+      ]
+    }
+  ],
+  "test_god_nodes_calculation": [
+    {
+      "name": "test_god_nodes_calculation",
+      "kind": "function",
+      "file": "tests/test_web_visualizer.py",
+      "line": 11,
+      "doc": "",
+      "args": [],
+      "methods": []
+    }
+  ],
+  "test_generate_web_graph_html": [
+    {
+      "name": "test_generate_web_graph_html",
+      "kind": "function",
+      "file": "tests/test_web_visualizer.py",
+      "line": 52,
       "doc": "",
       "args": [],
       "methods": []

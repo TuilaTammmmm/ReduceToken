@@ -150,6 +150,40 @@ RECOMMENDED ACTION: Read only 'src/auth/jwt.py'. Do NOT read entire directory.
 ==============================================
 ```
 
+### 📖 AI Agent Fast-Reading Guide (Line-Bound Reading)
+To achieve 95% token savings, coding agents must follow the **Line-Bound Reading** rule:
+1. **Query**: Call `rt query <symbol_or_keyword>` (or MCP `query_code_graph`).
+2. **Line Boundary**: The output returns the target file and line numbers, e.g. `[L42]`.
+3. **Bounded Read**: Execute `read_file(Path='src/auth/jwt.py', StartLine=35, EndLine=65)`.
+   - **NEVER** load the entire 800-line file into context when only a single function or class is needed.
+   - If callers or dependencies are needed, inspect only the specific 1-hop files listed in `IMPORTS` or `IMPORTED BY`.
+
+---
+
+## 🌐 Standalone Interactive Web Graph (`rt web`)
+
+ReduceToken includes a **100% self-contained, zero-CDN HTML5 Canvas interactive graph visualizer**:
+* **Zero External Dependencies**: Operates completely offline without downloading external CDN scripts.
+* **Anti-Collision Physics**: Nodes automatically repel each other and never overlap or clump together.
+* **Hide Isolated Files**: One-click checkbox to instantly filter out disconnected documentation, configuration, and license files, focusing purely on the code dependency network.
+* **File Type & Connection Filters**: Easily filter between Code Only, Tests Only, God Nodes Only, or files with active callers/dependencies.
+* **Adjustable Spacing Slider**: Expand or contract node spacing dynamically to suit small or massive codebases.
+* **Node Inspector Drawer**: Click any node to inspect all defined symbols with line numbers `[Lxx]`, inbound callers, and outbound dependencies with one-click navigation.
+
+Run it directly from your terminal:
+```bash
+rt web    # or: rt html
+```
+
+---
+
+## 🔬 Under the Hood: How ReduceToken Works
+
+1. **AST & Static Extraction**: Uses Python's native `ast.parse` and optimized regex parsers for JavaScript, TypeScript, Go, Rust, Java, and C/C++. Extracts classes, functions, decorators, line numbers, and explicit import statements with zero LLM API costs.
+2. **Path Alias & Monorepo Resolution**: Inspects `tsconfig.json` (`compilerOptions.paths`) and monorepo `package.json` workspaces to resolve virtual aliases (`@/*`, `~/*`, `workspace:*`) to real file paths on disk.
+3. **Directed Dependency Graph**: Builds bidirectional edges (`file_dependencies` and `file_dependents`) and computes **Degree Centrality Scores** (`(in_degree * 3) + out_degree + symbols * 0.1`) to identify **God Nodes** (critical architectural chokepoints).
+4. **Sub-10ms Delta Cache**: Hashes files with SHA-256 and tracks Git `HEAD`. Only modified files are reparsed; unchanged files are loaded instantly from `.codegraph/cache.json`.
+
 ---
 
 ## 📊 Token Economics: Before vs After
@@ -207,18 +241,26 @@ skills/reduce-token/
 
 You can use the short alias **`rt`** (or `reducetoken`) anywhere in your terminal:
 
-| Command (`rt` or `reducetoken`) | Action |
-|---|---|
-| `rt init [--force]` | Scans repository, builds `.codegraph/`, and generates AI rule files |
-| `rt query <symbol>` | Queries graph for a symbol/file with sub-10ms delta sync |
-| `rt update` | Incrementally re-indexes modified files (<100ms) |
-| `rt overview` | Outputs high-level architecture map |
-| `rt memory add "<Topic>" "<Details>"` | Records an architectural decision in `session_context.md` |
-| `rt memory conv "<Rule>"` | Records a persistent coding convention |
-| `rt compact` | Updates and prints compact session context |
-| `rt install --global` | Installs global plugin across all AI environments |
-| `rt mcp` | Runs as a native Model Context Protocol (MCP) server |
-| `rt git-hook` | Installs Git post-commit hook for auto-syncing |
+| Command (`rt` or `reducetoken`) | Action | Description |
+|---|---|---|
+| `rt` / `rt ui` | **Interactive Terminal UI** | Arrow-key navigation dashboard (`↑/↓` + `Enter`), instant shortcuts |
+| `rt help [command]` | **CLI Help & Guide** | Full CLI command reference or detailed help for a specific command |
+| `rt web` / `rt html` | **Interactive Web Graph** | Standalone HTML5 Canvas visualizer with anti-collision, filters & drawer |
+| `rt query <symbol>` | **Subgraph Query** | Pinpoints exact file, line number `[Lxx]`, and 1-hop dependencies (~60 tokens) |
+| `rt graph <symbol>` | **Terminal ASCII Box Graph** | Visualizes 2D callers/callees box diagram directly in terminal |
+| `rt tree [folder]` | **Visual Dependency Tree** | Tree view of files, defined symbols, imports, and callers |
+| `rt update` | **Incremental Sync (<50ms)** | Fast delta check; only re-indexes files modified since last scan |
+| `rt init [--clean]` | **Initialize Repository** | Sets up `.codegraph/` and generates AI rule files |
+| `rt init --force` | **Full Cache Rebuild** | Wipes cache and forces a complete re-scan of every file from scratch |
+| `rt doctor` | **System Diagnostics** | Checks cache health, Git hook status, and detected AI agent plugins |
+| `rt memory add "<Topic>" "<Desc>"` | **Add Memory Decision** | Saves an architectural decision to long-term memory |
+| `rt memory conv "<Rule>"` | **Add Convention** | Saves a persistent coding convention |
+| `rt compact` | **Compact Memory** | Summarizes memory context to keep fresh chat tabs under 150 tokens |
+| `rt adapters [subcmd]` | **Manage AI Adapters** | `list`, `enable <name>`, `disable <name>`, `remove <name>`, `sync` |
+| `rt upgrade [--flags]` | **Upgrade CLI & Plugins** | Self-update from Git with `--only`, `--skip`, or `--no-agents` |
+| `rt install --global` | **Multi-Agent Setup** | Installs global plugin across Antigravity, Cursor, Claude, OpenCode |
+| `rt mcp` | **MCP Server** | Runs native Model Context Protocol server over stdio |
+| `rt git-hook` | **Git Auto-Sync Hook** | Installs Git `post-commit` hook for 100% autonomous background sync |
 
 > **💡 Aliases**: Both `rt` and `reducetoken` are registered globally (`rd` is also registered for Linux/macOS; on Windows PowerShell `rt` is used to prevent collisions with the built-in `Remove-Item` alias).  
 > **Portable fallback**: `python -m reducetoken.cli <command>`.
