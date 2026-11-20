@@ -49,14 +49,6 @@
       "exports": []
     },
     {
-      "id": ".cursorrules",
-      "type": "file",
-      "language": "unknown",
-      "summary": "",
-      "symbols_count": 0,
-      "exports": []
-    },
-    {
       "id": ".gitattributes",
       "type": "file",
       "language": "unknown",
@@ -76,22 +68,6 @@
       "id": ".gitignore",
       "type": "file",
       "language": "unknown",
-      "summary": "",
-      "symbols_count": 0,
-      "exports": []
-    },
-    {
-      "id": "AGENTS.md",
-      "type": "file",
-      "language": "markdown",
-      "summary": "",
-      "symbols_count": 0,
-      "exports": []
-    },
-    {
-      "id": "CLAUDE.md",
-      "type": "file",
-      "language": "markdown",
       "summary": "",
       "symbols_count": 0,
       "exports": []
@@ -562,12 +538,12 @@
     },
     {
       "source": "reducetoken/cli.py",
-      "target": "reducetoken/cache.py",
+      "target": "reducetoken/scanner.py",
       "relation": "imports"
     },
     {
       "source": "reducetoken/cli.py",
-      "target": "reducetoken/parsers/js_ts_parser.py",
+      "target": "reducetoken/memory.py",
       "relation": "imports"
     },
     {
@@ -577,7 +553,22 @@
     },
     {
       "source": "reducetoken/cli.py",
-      "target": "reducetoken/parsers/generic_parser.py",
+      "target": "reducetoken/graph.py",
+      "relation": "imports"
+    },
+    {
+      "source": "reducetoken/cli.py",
+      "target": "reducetoken/cache.py",
+      "relation": "imports"
+    },
+    {
+      "source": "reducetoken/cli.py",
+      "target": "reducetoken/web_visualizer.py",
+      "relation": "imports"
+    },
+    {
+      "source": "reducetoken/cli.py",
+      "target": "reducetoken/generator.py",
       "relation": "imports"
     },
     {
@@ -587,22 +578,7 @@
     },
     {
       "source": "reducetoken/cli.py",
-      "target": "reducetoken/scanner.py",
-      "relation": "imports"
-    },
-    {
-      "source": "reducetoken/cli.py",
       "target": "reducetoken/tui.py",
-      "relation": "imports"
-    },
-    {
-      "source": "reducetoken/cli.py",
-      "target": "reducetoken/memory.py",
-      "relation": "imports"
-    },
-    {
-      "source": "reducetoken/cli.py",
-      "target": "reducetoken/generator.py",
       "relation": "imports"
     },
     {
@@ -612,22 +588,22 @@
     },
     {
       "source": "reducetoken/cli.py",
-      "target": "reducetoken/web_visualizer.py",
+      "target": "reducetoken/parsers/generic_parser.py",
       "relation": "imports"
     },
     {
       "source": "reducetoken/cli.py",
-      "target": "reducetoken/graph.py",
-      "relation": "imports"
-    },
-    {
-      "source": "reducetoken/generator.py",
-      "target": "reducetoken/graph.py",
+      "target": "reducetoken/parsers/js_ts_parser.py",
       "relation": "imports"
     },
     {
       "source": "reducetoken/generator.py",
       "target": "reducetoken/web_visualizer.py",
+      "relation": "imports"
+    },
+    {
+      "source": "reducetoken/generator.py",
+      "target": "reducetoken/graph.py",
       "relation": "imports"
     },
     {
@@ -637,27 +613,22 @@
     },
     {
       "source": "reducetoken/mcp_server.py",
-      "target": "reducetoken/cache.py",
-      "relation": "imports"
-    },
-    {
-      "source": "reducetoken/mcp_server.py",
-      "target": "reducetoken/parsers/js_ts_parser.py",
-      "relation": "imports"
-    },
-    {
-      "source": "reducetoken/mcp_server.py",
-      "target": "reducetoken/parsers/generic_parser.py",
-      "relation": "imports"
-    },
-    {
-      "source": "reducetoken/mcp_server.py",
       "target": "reducetoken/scanner.py",
       "relation": "imports"
     },
     {
       "source": "reducetoken/mcp_server.py",
       "target": "reducetoken/memory.py",
+      "relation": "imports"
+    },
+    {
+      "source": "reducetoken/mcp_server.py",
+      "target": "reducetoken/graph.py",
+      "relation": "imports"
+    },
+    {
+      "source": "reducetoken/mcp_server.py",
+      "target": "reducetoken/cache.py",
       "relation": "imports"
     },
     {
@@ -672,17 +643,12 @@
     },
     {
       "source": "reducetoken/mcp_server.py",
-      "target": "reducetoken/graph.py",
+      "target": "reducetoken/parsers/generic_parser.py",
       "relation": "imports"
     },
     {
-      "source": "reducetoken/tui.py",
-      "target": "reducetoken/cli.py",
-      "relation": "imports"
-    },
-    {
-      "source": "reducetoken/tui.py",
-      "target": "reducetoken/agent_adapters.py",
+      "source": "reducetoken/mcp_server.py",
+      "target": "reducetoken/parsers/js_ts_parser.py",
       "relation": "imports"
     },
     {
@@ -692,7 +658,17 @@
     },
     {
       "source": "reducetoken/tui.py",
-      "target": "reducetoken/generator.py",
+      "target": "reducetoken/cli.py",
+      "relation": "imports"
+    },
+    {
+      "source": "reducetoken/tui.py",
+      "target": "reducetoken/graph.py",
+      "relation": "imports"
+    },
+    {
+      "source": "reducetoken/tui.py",
+      "target": "reducetoken/agent_adapters.py",
       "relation": "imports"
     },
     {
@@ -702,7 +678,12 @@
     },
     {
       "source": "reducetoken/tui.py",
-      "target": "reducetoken/graph.py",
+      "target": "reducetoken/generator.py",
+      "relation": "imports"
+    },
+    {
+      "source": "reducetoken/web_visualizer.py",
+      "target": "reducetoken/scanner.py",
       "relation": "imports"
     },
     {
@@ -713,11 +694,6 @@
     {
       "source": "reducetoken/web_visualizer.py",
       "target": "reducetoken/graph.py",
-      "relation": "imports"
-    },
-    {
-      "source": "reducetoken/web_visualizer.py",
-      "target": "reducetoken/scanner.py",
       "relation": "imports"
     },
     {
@@ -752,6 +728,11 @@
     },
     {
       "source": "tests/test_graph.py",
+      "target": "reducetoken/parsers/__init__.py",
+      "relation": "imports"
+    },
+    {
+      "source": "tests/test_graph.py",
       "target": "reducetoken/generator.py",
       "relation": "imports"
     },
@@ -763,11 +744,6 @@
     {
       "source": "tests/test_graph.py",
       "target": "reducetoken/cache.py",
-      "relation": "imports"
-    },
-    {
-      "source": "tests/test_graph.py",
-      "target": "reducetoken/parsers/__init__.py",
       "relation": "imports"
     },
     {
@@ -792,12 +768,12 @@
     },
     {
       "source": "tests/test_tui.py",
-      "target": "reducetoken/graph.py",
+      "target": "reducetoken/tui.py",
       "relation": "imports"
     },
     {
       "source": "tests/test_tui.py",
-      "target": "reducetoken/tui.py",
+      "target": "reducetoken/graph.py",
       "relation": "imports"
     },
     {
@@ -807,17 +783,17 @@
     },
     {
       "source": "tests/test_web_visualizer.py",
-      "target": "reducetoken/graph.py",
+      "target": "reducetoken/web_visualizer.py",
       "relation": "imports"
     },
     {
       "source": "tests/test_web_visualizer.py",
-      "target": "reducetoken/web_visualizer.py",
+      "target": "reducetoken/graph.py",
       "relation": "imports"
     }
   ],
   "stats": {
-    "total_files": 45,
+    "total_files": 42,
     "total_symbols": 173,
     "entry_points": [
       "reducetoken/cli.py"

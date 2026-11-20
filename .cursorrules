@@ -1,8 +1,0 @@
-# ReduceToken - Cursor Rules
-- Rule 1: Before browsing files or making multi-file searches, read `.codegraph/architecture_map.md`.
-- Rule 2: Read `.codegraph/session_context.md` to recall past project conventions and agreed decisions.
-- Rule 3: Execute `rt query <symbol>` in terminal to find the exact file and callers.
-- Rule 4: If import aliases (@/*) are used, resolve paths via tsconfig.json / package.json before reading.
-- Rule 5: Only read files that are directly related to the user query.
-- Rule 6 (Auto-Memory): Silently record any new architecture decision into `.codegraph/session_context.md`. If it exceeds 50 lines, run `rt compact`.
-- Rule 7: Keep chat responses concise to prevent context token explosion.
