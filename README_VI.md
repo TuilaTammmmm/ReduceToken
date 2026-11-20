@@ -89,16 +89,49 @@ rt init
 
 ---
 
-## 🔄 Cách cập nhật phiên bản mới
+## 🔄 Cách cập nhật phiên bản mới & Quản lý AI Adapters
 
 Khi có tính năng mới hoặc bản sửa lỗi, bạn có thể nâng cấp mọi thứ chỉ với **1 câu lệnh duy nhất**:
 
 ```bash
 rt upgrade
 ```
-*Lệnh này sẽ tự động kéo bản cập nhật mới nhất từ Git qua pip VÀ đồng bộ lại toàn bộ plugin của các AI Agent (Antigravity, Cursor, Claude Code, OpenCode, Codex).*
+*Lệnh này sẽ tự động kéo bản cập nhật mới nhất từ Git qua pip VÀ đồng bộ lại toàn bộ plugin của các AI Agent đang được bật (Antigravity, Cursor, Claude Code, OpenCode, Codex).*
 
-*(Hoặc nâng cấp thủ công qua pip: `pip install -U git+https://github.com/TuilaTammmmm/ReduceToken.git && rt install --global`)*
+### Tùy chọn nâng cấp có chọn lọc:
+Nếu bạn chỉ dùng một số công cụ AI nhất định hoặc không muốn chạm vào config của công cụ khác:
+* **Bỏ qua một số công cụ**: `rt upgrade --skip cursor,claude`
+* **Chỉ nâng cấp một công cụ**: `rt upgrade --only antigravity`
+* **Chỉ nâng cấp thư viện Python CLI (không đụng vào file AI)**: `rt upgrade --no-agents`
+
+### Quản lý trạng thái AI Agent bền vững (`rt adapters`):
+Bạn có thể cấu hình trạng thái bật/tắt vĩnh viễn trong `~/.reducetoken/config.json`:
+```bash
+rt adapters                         # Xem danh sách AI phát hiện được và trạng thái Auto-Sync
+rt adapters disable cursor claude   # Tắt tự động đồng bộ cho Cursor và Claude khi nâng cấp
+rt adapters enable cursor           # Bật lại tự động đồng bộ cho Cursor
+rt adapters remove claude           # Gỡ bỏ hoàn toàn file cấu hình khỏi thư mục của Claude
+rt adapters sync                    # Đồng bộ ngay lập tức cho tất cả các AI đang bật
+```
+
+---
+
+## 🌐 Bản đồ Web tương tác (`rt web`) & Giao diện dòng lệnh (`rt ui`)
+
+### 1. Web Graph tương tác trên trình duyệt (`rt web` / `rt html`)
+Khởi chạy bảng đồ thị trực quan HTML5 Canvas độc lập, hiệu năng cao, zero-CDN:
+* **📁 Gom cụm thư mục (Folder Enclosures)**: Các file được sắp xếp thành bố cục lưới gọn gàng, cách ly chống đè node bên trong các khung viền đứt của thư mục.
+* **✋ Kéo cả thư mục đi tự do**: Nhấn giữ vào Badge thư mục (`📁 folder/ (N files)  ⠿`) hoặc khung folder để di chuyển cả thư mục cùng mọi file bên trong. Không giật, không trôi giạt, không kéo chéo đàn hồi.
+* **🛡️ Vòng đệm bảo vệ node (Node Space)**: Thanh trượt khoảng cách (30px–240px) tạo một vòng bảo vệ vô hình quanh từng node, ngăn các node đè dính lên nhau.
+* **🎨 Bảng màu nhận diện đa ngôn ngữ**: Nhận diện và gán màu riêng biệt cho Python, JavaScript, TypeScript, Rust, Go, HTML, CSS, Markdown, JSON, YAML, v.v.
+* **★ Điểm nút chiến lược (God Nodes)**: Nổi bật các module trọng yếu đóng vai trò trung tâm kiến trúc với vầng hào quang phát sáng.
+* **📑 Thanh xem định nghĩa Symbol (Sidebar Drawer)**: Click vào node bất kỳ để xem tóm tắt docstring, danh sách caller, dependency và số dòng định nghĩa `[Lxx]`. Cuộn chuột xem symbol definitions được cô lập, không bao giờ làm phóng to/thu nhỏ đồ thị.
+* **⌨ Phím tắt bàn phím**: `Esc` (Đóng bảng/modal), `/` hoặc `f` (Tìm kiếm), `Space` (Tạm dừng/tiếp tục vật lý), `r` (Reset camera), `c` (Bật/tắt cụm thư mục), `i` (Ẩn/hiện file cô lập), `?` (Mở bảng phím tắt).
+
+### 2. Giao diện dòng lệnh tương tác (`rt` / `rt ui`)
+Dashboard điều khiển con trỏ kiểu OpenCode ngay trong terminal:
+* Điều hướng bằng phím mũi tên (`↑/↓` hoặc `j/k`), hỗ trợ phím số nhanh `1-7`, `0` để thoát.
+* Tìm kiếm Subgraph, vẽ sơ đồ hộp ASCII Box 2 chiều, kiểm tra sức khỏe hệ thống (Doctor), xem và nén bộ nhớ.
 
 ---
 

@@ -77,15 +77,49 @@ rt init
 
 ---
 
-### 🔄 How to Update (For Existing Users)
+### 🔄 How to Update & Control AI Adapters
 When a new version or bug fix is released, upgrade everything in **1 single command**:
 
 ```bash
 rt upgrade
 ```
-*This automatically pulls the latest Git package via pip AND synchronizes all global AI plugins (Antigravity, Cursor, Claude Code, OpenCode, Codex).*
+*This automatically pulls the latest Git package via pip AND synchronizes all enabled global AI plugins (Antigravity, Cursor, Claude Code, OpenCode, Codex).*
 
-*(Or update manually via pip: `pip install -U git+https://github.com/TuilaTammmmm/ReduceToken.git && rt install --global`)*
+#### Selective Upgrades
+If you only use certain AI tools or don't want all configurations touched:
+* **Skip specific tools**: `rt upgrade --skip cursor,claude`
+* **Upgrade one tool only**: `rt upgrade --only antigravity`
+* **Upgrade Python CLI only (no AI configs touched)**: `rt upgrade --no-agents`
+
+#### Persistent AI Adapter Management
+You can also permanently control which AI tools are synchronized via `~/.reducetoken/config.json`:
+```bash
+rt adapters                         # List detection and auto-sync status
+rt adapters disable cursor claude   # Permanently skip Cursor & Claude during upgrades
+rt adapters enable cursor           # Re-enable auto-sync for Cursor
+rt adapters remove claude           # Completely uninstall ReduceToken from Claude
+rt adapters sync                    # Synchronize all enabled platforms now
+```
+
+---
+
+## 🌐 Interactive Web Graph (`rt web`) & Terminal UI (`rt ui`)
+
+### 1. Interactive Web Graph (`rt web` / `rt html`)
+Launch a high-performance, standalone HTML5 Canvas visualizer in your browser with zero external dependencies:
+* **📁 Folder Enclosure Clustering**: Files are neatly organized into structured, collision-free grid layouts inside dashed folder regions.
+* **✋ Drag Entire Folders**: Grab the header badge (`📁 folder/ (N files)  ⠿`) or inside the folder box to move whole directories across the canvas. Zero drift, zero inter-folder spring pulling.
+* **🛡️ Node Clearance Buffer**: Adjust the *Node Space* slider (30px–240px) to set an invisible protective clearance halo around nodes.
+* **🎨 Dynamic Language Palette**: Color-coded nodes for Python, JavaScript, TypeScript, Rust, Go, HTML, CSS, Markdown, JSON, YAML, etc.
+* **★ God Nodes & Chokepoints**: Instantly spot foundational core modules with glowing orange halos.
+* **📑 Symbol Definition Sidebar**: Click any node to inspect docstrings, callers, dependencies, and defined symbols `[Lxx]`. Scrolling the sidebar never zooms the canvas graph.
+* **⌨ Keyboard Shortcuts**: `Esc` (Close panels), `/` or `f` (Search), `Space` (Pause/Resume physics), `r` (Reset camera), `c` (Toggle folders), `i` (Toggle isolated files), `?` (Shortcut modal).
+
+### 2. Interactive Terminal UI (`rt` / `rt ui`)
+OpenCode-style cursor-controlled dashboard in your terminal:
+* Arrow keys (`↑/↓` or `j/k`) with 60fps cursor rendering.
+* Numeric shortcuts (`1-7`, `0` to quit).
+* Subgraph query, Visual ASCII Box graph, System Doctor, and Memory Management.
 
 ---
 
